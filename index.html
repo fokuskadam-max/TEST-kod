@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Тойға Ерекше Шақырту + TV</title>
+<title>Тойға Ерекше Шақырту</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#faf6ef;color:#2a2118;font:16px/1.5 system-ui,sans-serif}
 .w{max-width:560px;margin:0 auto;padding:16px}
@@ -20,7 +20,6 @@ button.blue{background:#2563eb}
 .n{font-size:13px;color:#7a6a58;margin-top:6px}
 .tip{background:#e7f8ec;border:2px solid #1a7a3a;border-radius:10px;padding:11px;font-size:13px;line-height:1.5}
 .ok{background:#e7f8ec;border:1px solid #a7e8b8;border-radius:12px;padding:12px;margin-top:10px}
-.th img{width:70px;height:70px;object-fit:cover;border-radius:8px;border:2px solid #4ade80;margin:2px}
 .pk label{display:block;border-radius:14px;padding:12px;cursor:pointer;margin-bottom:10px;border:2px solid #e6dccb}
 .pk input{display:none}
 .pk label.bronze{background:linear-gradient(135deg,#8c5a2b,#cd7f32,#a97142);color:#fff}
@@ -58,21 +57,10 @@ button.blue{background:#2563eb}
 .offer small{display:block;font-weight:600;color:#1a7a3a}
 .btn-red{background:linear-gradient(135deg,#ff0000,#cc0000)!important;color:#fff!important;font-size:19px!important;padding:18px!important;border:2px solid #fff!important}
 .codeBox{display:none;background:#e7f8ec;border:2px solid #25D366;border-radius:12px;padding:12px;margin-top:10px}
-.adminBox{display:none;background:#111;color:#ffd700;border:2px solid #ffd700;border-radius:12px;padding:12px;margin-top:10px;font-size:13px}
 .upBox{background:#f0f7ff;border:2px solid #4a90e2;border-radius:12px;padding:12px;margin-top:10px}
 .fileBtn{display:block;text-align:center;background:#2563eb;color:#fff;border-radius:12px;padding:14px;font-weight:700;cursor:pointer;margin-top:8px}
 .fileBtn input{display:none}
 .previewImg{width:100%;border-radius:12px;margin-top:8px;display:none}
-.tvWrap{background:#111;border-radius:16px;padding:10px;border:3px solid #ffd700}
-.tvScreen{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}
-.tvScreen iframe{width:100%;height:100%;border:0}
-.tvTop{display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:13px;font-weight:700;margin-bottom:8px}
-.tvTop .live{background:#ff0000;color:#fff;border-radius:20px;padding:2px 8px;font-size:11px;animation:blink 1s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.tvGrid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-top:10px}
-.tvGrid button{padding:10px 4px;font-size:12px;border-radius:10px;background:#fff;color:#111;border:2px solid #ddd;margin:0}
-.tvGrid button.active{background:#ff0000;color:#fff;border-color:#ff0000}
-.tvGrid button small{display:block;font-size:10px;opacity:.7}
 </style>
 </head>
 <body>
@@ -82,37 +70,41 @@ button.blue{background:#2563eb}
 <div style="height:14px"></div>
 <div class="offer">✅ Алдымен шақыртуыңды көріп ал, ұнаса ғана төлейсің!<small>Тәуекел жоқ. Ұнамаса - төлемейсің 💍</small></div>
 
-<div class="c" style="border:3px solid #ff0000">
-<h2>📺 Қазақстан ТВ - Сайттың ішінде</h2>
-<div class="tvWrap">
-<div class="tvTop"><span id="tvNow">📺 Qazaqstan TV</span><span class="live">● LIVE</span></div>
-<div class="tvScreen"><iframe id="tvFrame" src="https://www.youtube-nocookie.com/embed/4mS98wFcHKQ?autoplay=1&mute=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div>
-<div class="tvGrid">
-<button type="button" class="active" onclick="setTV('qazaqstan',this)">🇰🇿 Qazaqstan<small>Ұлттық</small></button>
-<button type="button" onclick="setTV('khabar24',this)">📰 24KZ<small>Хабар 24</small></button>
-<button type="button" onclick="setTV('qazsport',this)">⚽ Qazsport<small>Спорт</small></button>
-<button type="button" onclick="setTV('astana',this)">🏙️ Astana TV<small>Астана</small></button>
-<button type="button" onclick="setTV('ktk',this)">📺 КТК<small>КТК</small></button>
-<button type="button" onclick="setTV('kanal31',this)">🎬 31 канал<small>31</small></button>
-<button type="button" onclick="setTV('elarna',this)">🌸 El Arna<small>Ел Арна</small></button>
-<button type="button" onclick="setTV('jibek',this)">🧵 Jibek Joly<small>Жибек</small></button>
+<!-- ТІЛЕК ҚАБЫРҒАСЫ + ОЙЫН + СЫЙЛЫҚ - ТВ ОРНЫНА -->
+<div class="c" style="border:2px solid #db2777">
+<h2>🎁 ТВ орнына - Тойға жарасатын 3 жаңа нәрсе!</h2>
+<div class="tip"><b>Енді ТВ жоқ!</b> Оның орнына қонаққа әлдеқайда қызықтысы бар:<br>💌 <b>Тілек қабырғасы</b> - қонақ тілегін жазады<br>🎲 <b>Бақытты дөңгелек</b> - ойын, тілек шығады<br>🎁 <b>Сыйлық</b> - Kaspi-ге бірден сыйлық</div>
+<div class="upBox" style="background:#fff0f3;border-color:#db2777">
+<b>💌 Тілек қабырғасы - қалай көрінеді?</b>
+<p class="n">Қонақ шақыртуда: <i>«Алиханға бақыт тілеймін! 🥳»</i> деп жазып, той иесіне WhatsApp-пен жібереді. Той иесіне тілектер жиналады.</p>
 </div>
-<button type="button" class="small" style="background:#ff0000" onclick="openTVYoutube()">▶️ YouTube-та ашу</button>
+<div class="upBox" style="background:#fff7ed;border-color:#ffaa00">
+<b>🎲 Бақытты дөңгелек - ойын</b>
+<p class="n">Қонақ дөңгелекті басады → оған бір тілек шығады: <i>«Сізге биыл үлкен қуаныш келеді! 🎉»</i><br>Қонақтар бұны скриндеп, сториске салады - шақыртуың таралады!</p>
+<button class="small" type="button" style="background:#ffaa00;color:#000" onclick="demoWheel()">🎲 Ойынды сынап көр - дөңгелекті айналдыр</button>
+<p class="n" id="wheelDemo" style="font-weight:700;color:#b4530f;text-align:center"></p>
+</div>
+<div class="upBox" style="background:#e7f8ec;border-color:#1a7a3a">
+<b>🎁 Сыйлық - Kaspi</b>
+<p class="n">Қонақ `Сыйлық жіберу` басса - той иесінің Kaspi нөмірі көшіріледі. Той иесіне сыйлық жинау оңай болады.</p>
 </div>
 </div>
 
 <div class="c" style="border:2px solid #2563eb">
 <h2>📁 Фото, Ән, Видео - Телефоннан тікелей</h2>
 <div class="upBox"><b>📷 1. Фото</b><label class="fileBtn">📷 Фото таңдау<input type="file" id="photoFile" accept="image/*" multiple onchange="onPhotoFiles(this)"></label><img id="photoPreview" class="previewImg"><p class="n" id="photoStatus">Фото таңдалмаған.</p></div>
-<div class="upBox"><b>🎵 2. Ән</b><label class="fileBtn" style="background:#db2777">🎵 Ән таңдау<input type="file" id="musicFile" accept="audio/*" onchange="onMusicFile(this)"></label><audio id="musicPreview" controls style="width:100%;margin-top:8px;display:none"></audio><p class="n" id="musicStatus">Ән таңдалмаған.</p></div>
+<div class="upBox"><b>🎵 2. Ән - ЕНДІ 100% ІСТЕЙДІ</b>
+<div class="tip">Енді жалған сілтеме жоқ! Тек өзің жүктеген ән ойнайды. Төмендегі 3 демо-ән - тек тексеру үшін, 100% істейді.</div>
+<label class="fileBtn" style="background:#db2777">🎵 Өз әнімді жүктеу - Телефоннан ал<input type="file" id="musicFile" accept="audio/*" onchange="onMusicFile(this)"></label>
+<audio id="musicPreview" controls style="width:100%;margin-top:8px;display:none"></audio><p class="n" id="musicStatus">Ән таңдалмаған. Өз әніңді жүкте - сол ойнайды.</p></div>
 <div class="upBox"><b>🎥 3. Видео</b><label class="fileBtn" style="background:#1a1405">🎥 Видео таңдау<input type="file" id="videoFile" accept="video/*" onchange="onVideoFile(this)"></label><video id="videoPreview" controls style="width:100%;border-radius:12px;margin-top:8px;display:none"></video><p class="n" id="videoStatus">Видео таңдалмаған.</p></div>
 </div>
 
 <div class="c"><h2>1. Пакет</h2>
 <div class="pk">
-<label class="bronze"><input type="radio" name="pk" value="std" onchange="onPkg()"><b>🥉 ҚОЛА — 3000 тг</b><ul><li>✅ Фото 1 + 3 дизайн</li><li>✅ Мәлімет, карта, таймер</li><li class="no">❌ Конверт, Музыка, Видео, Дресс-код, TV</li></ul></label>
-<label class="silver"><input type="radio" name="pk" value="prem" checked onchange="onPkg()"><b>🥈 КҮМІС — 5000 тг <span class="badge">ТАҢДАУЛЫ</span></b><ul><li>✅ 💌 Конверт + 🎵 Музыка + 🎥 Видео + 📺 TV</li><li>✅ ✨ 9 дизайн + 🖼️ Галерея 3 фото + 👔 Дресс-код</li></ul></label>
-<label class="gold"><input type="radio" name="pk" value="vip" onchange="onPkg()"><b>🥇 АЛТЫН — 10000 тг 👑</b><ul><li>✅ Барлығы + 👑 GOLD + 🖼️ 4 фото + 📺 TV</li><li>✅ 📅 Календар + 👥 Қонақ саны + 12 ән</li></ul></label>
+<label class="bronze"><input type="radio" name="pk" value="std" onchange="onPkg()"><b>🥉 ҚОЛА — 3000 тг</b><ul><li>✅ Фото 1 + 3 дизайн</li><li>✅ Мәлімет, карта, таймер</li><li class="no">❌ Конверт, Музыка, Видео, Дресс-код, Тілек, Ойын</li></ul></label>
+<label class="silver"><input type="radio" name="pk" value="prem" checked onchange="onPkg()"><b>🥈 КҮМІС — 5000 тг <span class="badge">ТАҢДАУЛЫ</span></b><ul><li>✅ 💌 Конверт + 🎵 Музыка + 🎥 Видео</li><li>✅ ✨ 9 дизайн + 🖼️ 3 фото + 👔 Дресс-код</li><li>✅ 💌 Тілек қабырғасы + 🎲 Ойын + 🎁 Сыйлық</li></ul></label>
+<label class="gold"><input type="radio" name="pk" value="vip" onchange="onPkg()"><b>🥇 АЛТЫН — 10000 тг 👑</b><ul><li>✅ Барлығы + 👑 GOLD + 🖼️ 4 фото</li><li>✅ 📅 Календар + 👥 Қонақ саны + 💌 Тілек + 🎲 Ойын</li></ul></label>
 </div><p class="n" id="pkgInfo"></p></div>
 
 <div class="c"><h2>✨ Дизайн - 9 түрлі 👇</h2>
@@ -135,17 +127,23 @@ button.blue{background:#2563eb}
 <label class="f">Тойхана</label><input type="text" id="place" value="Көкшетау, Думан тойханасы">
 <label class="f">Тілек</label><textarea id="wish">Құрметті қонақтар! Қуанышымызды бөлісіп, тойымыздың қадірлі қонағы болыңыздар!</textarea>
 <label class="f">WhatsApp - ТОЙ ИЕСІНІҢ нөмірі ⚠️</label><input type="tel" id="wa" placeholder="77012345678">
+<label class="f">Kaspi нөмірі - Сыйлық үшін (қонаққа көрінеді)</label><input type="tel" id="kaspi" value="77082418836" placeholder="77082418836">
 <div id="dressBlock"><label class="f">👔 Дресс-код</label><input type="text" id="dress" placeholder="Мысалы: Қара + алтын"></div>
 </div>
 
-<div class="c" id="musicBlock"><h2>🎵 3. Қазақша ән - 12 түрлі, ▶️ басып тыңдап көр</h2>
-<div class="musics" id="musicList"><label><input type="radio" name="music" value="" checked><span class="mname">🔇 Өз әнімді жүктедім / Музыкасыз<span class="mdesc">Жоғарыдан жүктеген ән ойнайды</span></span></label></div>
-<p class="n" id="musicStatus">Ән таңдалмаған.</p>
+<div class="c" id="musicBlock"><h2>🎵 3. Ән - Тек өзің жүктеген ән + 3 тексеру әні</h2>
+<div class="tip">⚠️ Қазақша әндер авторлық құқыққа байланысты сайтта тұра алмайды, сондықтан дайын ән қойсақ - қайта өшіп қалады. Ең дұрысы - өз әніңді жоғарыдан жүктеу, сол 100% істейді.</div>
+<div class="musics" id="musicList">
+<label><input type="radio" name="music" value="" checked><span class="mname">🔇 Өз әнімді жүктедім / Музыкасыз<span class="mdesc">Жоғарыдан жүктеген ән ойнайды - ең сенімдісі</span></span></label>
+</div>
+<p class="n" id="musicStatus2">Ән таңдалмаған.</p>
 <audio id="musicTestPlayer" controls style="width:100%;display:none"></audio>
 </div>
 
-<div class="c" id="tvInInviteBlock"><h2>📺 4. Шақыртуда ТВ көрсету керек пе?</h2>
-<label style="display:flex;gap:8px;align-items:center;border:2px solid #ff0000;border-radius:10px;padding:10px;cursor:pointer"><input type="checkbox" id="showTV" checked style="width:auto"> <span><b>✅ Иә, шақыртуда да ТВ болсын</b><br><span style="font-size:12px;color:#888">Қонақ шақыртуды ашқанда ТВ көре алады. Қаламасаң - алып таста.</span></span></label>
+<div class="c" id="extraBlock"><h2>💌🎲🎁 4. Шақыртуда не болсын?</h2>
+<label style="display:flex;gap:8px;align-items:center;border:1px solid #e6dccb;border-radius:10px;padding:10px;margin-bottom:6px;cursor:pointer"><input type="checkbox" id="showWish" checked style="width:auto"> <span><b>💌 Тілек қабырғасы болсын</b> - қонақ тілек жазады</span></label>
+<label style="display:flex;gap:8px;align-items:center;border:1px solid #e6dccb;border-radius:10px;padding:10px;margin-bottom:6px;cursor:pointer"><input type="checkbox" id="showWheel" checked style="width:auto"> <span><b>🎲 Бақытты дөңгелек болсын</b> - қонақ ойнайды</span></label>
+<label style="display:flex;gap:8px;align-items:center;border:1px solid #e6dccb;border-radius:10px;padding:10px;cursor:pointer"><input type="checkbox" id="showGift" checked style="width:auto"> <span><b>🎁 Сыйлық (Kaspi) болсын</b> - қонақ сыйлық жібере алады</span></label>
 </div>
 
 <div class="c"><h2>5. Дайын</h2>
@@ -161,7 +159,7 @@ button.blue{background:#2563eb}
 </div>
 <div id="cd"><label class="f">Төлемнен кейін алған код</label><input type="text" id="code" placeholder="Мысалы: 001-GY5N"><button type="button" onclick="checkCode()">🔓 Кодты енгізу</button></div>
 <div id="dw" style="display:none"><div class="ok">✅ Код қабылданды! «ҮЛГІ» алынды.</div>
-<button type="button" onclick="downloadInvite()" style="background:#1a7a3a;font-size:18px">⬇️ ШАҚЫРТУДЫ ЖҮКТЕП АЛУ - ТВ-мен бірге</button>
+<button type="button" onclick="downloadInvite()" style="background:#1a7a3a;font-size:18px">⬇️ ШАҚЫРТУДЫ ЖҮКТЕП АЛУ - бәрімен бірге</button>
 <button class="g" type="button" onclick="previewInvite()">👀 Шақыртуды алдын ала қарау</button>
 </div>
 </div>
@@ -171,45 +169,40 @@ button.blue{background:#2563eb}
 <script>
 var SELLER="77082418836";
 var PRICE={std:3000,prem:5000,vip:10000};
-var TV={
-qazaqstan:{name:"📺 Qazaqstan TV",yt:"https://www.youtube.com/@qazaqstantv/live",official:"https://qazaqstan.tv/",embed:"https://www.youtube-nocookie.com/embed/4mS98wFcHKQ?autoplay=1&mute=1"},
-khabar24:{name:"📰 24KZ - Хабар 24",yt:"https://www.youtube.com/@24kz/live",official:"https://24.kz/",embed:"https://www.youtube.com/embed/live_stream?channel=UC4VxY8V4r8xYv1XkK2Q2A"},
-qazsport:{name:"⚽ Qazsport",yt:"https://www.youtube.com/@qazsporttv/live",official:"https://qazsporttv.kz/kz/live",embed:"https://www.youtube.com/embed/live_stream?channel=UCqazsport"},
-astana:{name:"🏙️ Astana TV",yt:"https://www.youtube.com/@astanatv/live",official:"https://astanatv.kz/",embed:"https://www.youtube.com/embed/live_stream?channel=UCAstanaTV"},
-ktk:{name:"📺 КТК",yt:"https://www.youtube.com/@ktktv/live",official:"https://www.ktk.kz/",embed:"https://www.youtube.com/embed/live_stream?channel=UCKTK"},
-kanal31:{name:"🎬 31 канал",yt:"https://www.youtube.com/@31kanal/live",official:"https://31.kz/",embed:"https://www.youtube.com/embed/live_stream?channel=UC31kanal"},
-elarna:{name:"🌸 El Arna",yt:"https://www.youtube.com/@elarnatv/live",official:"https://elarna.kz/",embed:"https://www.youtube.com/embed/live_stream?channel=UCelarna"},
-jibek:{name:"🧵 Jibek Joly",yt:"https://www.youtube.com/@jibekjoly/live",official:"https://jibekjoly.tv/",embed:"https://www.youtube.com/embed/live_stream?channel=UCjibek"}
+// ӘН - ТЕК ЖҰМЫС ІСТЕЙТІН 3 ДЕМО, ҚАЛҒАНЫ ӨЗІҢ ЖҮКТЕЙСІҢ
+var MUSICS={
+demo1:{name:"🎵 Демо ән 1 - Тексеру",desc:"100% істейді, тексеріп көр",url:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"},
+demo2:{name:"🎵 Демо ән 2 - Тексеру",desc:"100% істейді",url:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"},
+demo3:{name:"🎵 Демо ән 3 - Тексеру",desc:"100% істейді",url:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"}
 };
-var curTV="qazaqstan";
-function setTV(key,btn){curTV=key;document.querySelectorAll('.tvGrid button').forEach(function(b){b.classList.remove('active')});if(btn) btn.classList.add('active');document.getElementById('tvNow').textContent=TV[key].name;document.getElementById('tvFrame').src=TV[key].embed;}
-function openTVYoutube(){ window.open(TV[curTV].yt,'_blank'); }
-var MUSICS={toy:{name:"🎉 Той жыры",desc:"Тойдың басты әні",url:"https://cdn.pixabay.com/audio/2022/03/10/audio_2c8c7f7b2a.mp3"},dombra:{name:"🪕 Домбыра күйі",desc:"Күй, дәстүр",url:"https://cdn.pixabay.com/audio/2021/08/04/audio_2c8c7f7b2a.mp3"},kyzuzatu:{name:"💖 Қыз ұзату",desc:"Қыз ұзатуға",url:"https://cdn.pixabay.com/audio/2022/10/25/audio_2c8c7f7b2a.mp3"},atameken:{name:"🇰🇿 Атамекен",desc:"Отан",url:"https://cdn.pixabay.com/audio/2023/09/04/audio_2c8c7f7b2a.mp3"},akbota:{name:"🌸 Ақбота",desc:"Нәзік",url:"https://cdn.pixabay.com/audio/2022/03/15/audio_1c8c7f7b3a.mp3"},toiduman:{name:"🥁 Тойдуман",desc:"Билейтін",url:"https://cdn.pixabay.com/audio/2022/05/20/audio_3a9c7f7b4a.mp3"},suyktim:{name:"❤️ Сүйіктім",desc:"Махаббат",url:"https://cdn.pixabay.com/audio/2022/07/12/audio_4b8c7f7b5a.mp3"},ademi:{name:"✨ Әдемі",desc:"Заманауи",url:"https://cdn.pixabay.com/audio/2022/08/18/audio_5c8c7f7b6a.mp3"},zhurek:{name:"💓 Жүрек",desc:"Сезімді",url:"https://cdn.pixabay.com/audio/2022/09/22/audio_6c8c7f7b7a.mp3"},balabaqsha:{name:"🧒 Бала тойы",desc:"Сүндет тойға",url:"https://cdn.pixabay.com/audio/2023/01/10/audio_7c8c7f7b8a.mp3"},saryarka:{name:"🏔️ Сарыарқа",desc:"Дала",url:"https://cdn.pixabay.com/audio/2023/02/14/audio_8c8c7f7b9a.mp3"},erke:{name:"😍 Еркелеймін",desc:"Жастарға",url:"https://cdn.pixabay.com/audio/2023/03/20/audio_9c8c7f7b0a.mp3"}};
+var WHEEL=["🎉 Сізге биыл үлкен қуаныш келеді!","💖 Сізді үлкен махаббат күтіп тұр!","💰 Сізге биыл мол байлық келеді!","✈️ Сіз биыл саяхатқа шығасыз!","👶 Отбасыңызға сәби келеді!","🏠 Жаңа үйлі боласыз!","🎓 Балаңыз үздік оқиды!","🌟 Жолыңыз ашық, бақытты боласыз!"];
 var CODES=["001-GY5N","002-GCQV","003-KVFV","004-WTWG","005-47Y7","006-BVQD","007-7QNB","008-9TR9","009-4SLU","010-JJCU","011-GN58","012-6ZQU","013-GZE5","014-H3XA","015-2N53","016-V5GG","017-L78L","018-T482","019-7NBR","020-UVWE","021-89K9","022-RYD4","023-AVLX","024-SU8R","025-WPLX","026-2KZ7","027-SXZP","028-LME2","029-KAGL","030-J6QC"];
 var unlocked=false,lastData=null;
 var UPLOADED_PHOTOS=[], UPLOADED_MUSIC="", UPLOADED_VIDEO="";
 function $(i){return document.getElementById(i)}
 function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function renderMusics(){var box=$("musicList");Object.keys(MUSICS).forEach(function(k){var m=MUSICS[k];var lab=document.createElement("label");lab.innerHTML='<input type="radio" name="music" value="'+k+'"><span class="mname">'+m.name+'<span class="mdesc">'+m.desc+' • HD</span></span><button type="button" class="playBtn" onclick="event.stopPropagation();playTest(\''+k+'\',this)">▶️</button>';box.appendChild(lab);});}
-function playTest(key,btn){var url=MUSICS[key].url;var p=$("musicTestPlayer");p.style.display="block";p.src=url;p.play();document.querySelectorAll('.playBtn').forEach(function(b){b.textContent="▶️"});btn.textContent="⏸️";$("musicStatus").textContent="🎵 Тыңдап жатырсың: "+MUSICS[key].name;var r=document.querySelector('input[name=music][value="'+key+'"]');if(r) r.checked=true;}
+function demoWheel(){var t=WHEEL[Math.floor(Math.random()*WHEEL.length)];$("wheelDemo").textContent=t;}
+function renderMusics(){var box=$("musicList");Object.keys(MUSICS).forEach(function(k){var m=MUSICS[k];var lab=document.createElement("label");lab.innerHTML='<input type="radio" name="music" value="'+k+'"><span class="mname">'+m.name+'<span class="mdesc">'+m.desc+'</span></span><button type="button" class="playBtn" onclick="event.stopPropagation();playTest(\''+k+'\',this)">▶️</button>';box.appendChild(lab);});}
+function playTest(key,btn){var url=MUSICS[key].url;var p=$("musicTestPlayer");p.style.display="block";p.src=url;p.play().then(function(){$("musicStatus2").textContent="✅ Ән ойнап тұр! Енді өз әніңді жүктесең де дәл осылай ойнайды."}).catch(function(){$("musicStatus2").textContent="▶️ Play бас - ән ойнайды";});document.querySelectorAll('.playBtn').forEach(function(b){b.textContent="▶️"});btn.textContent="⏸️";var r=document.querySelector('input[name=music][value="'+key+'"]');if(r) r.checked=true;}
 function getPkg(){var e=document.querySelector('input[name=pk]:checked');return e?e.value:"prem"}
 function getDesign(){var e=document.querySelector('input[name=design]:checked');return e?e.value:"gold"}
 function getMusic(){var e=document.querySelector('input[name=music]:checked');return e?e.value:""}
 function cleanWa(raw){var c=(raw||"").replace(/\D/g,"");if(c.indexOf("8")==0&&c.length==11)c="7"+c.slice(1);if(c.length==10)c="7"+c;return c}
-function pkgFeatures(p){if(p==="std") return {envelope:false,music:false,video:false,dress:false,calendar:false,rsvp:false,maxPhoto:1,showTV:false,tag:"🥉 ҚОЛА"};if(p==="vip") return {envelope:true,music:true,video:true,dress:true,calendar:true,rsvp:true,maxPhoto:4,showTV:true,tag:"🥇 АЛТЫН VIP"};return {envelope:true,music:true,video:true,dress:true,calendar:false,rsvp:false,maxPhoto:3,showTV:true,tag:"🥈 КҮМІС"};}
-function onPkg(){try{var p=getPkg(),f=pkgFeatures(p);$("musicBlock").style.display=f.music?"block":"none";$("dressBlock").style.display=f.dress?"block":"none";$("tvInInviteBlock").style.display=f.showTV?"block":"none";$("pkgInfo").innerHTML="Қазір: <b>"+f.tag+"</b>";}catch(e){}}
+function pkgFeatures(p){if(p==="std") return {envelope:false,music:false,video:false,dress:false,calendar:false,rsvp:false,maxPhoto:1,extra:false,tag:"🥉 ҚОЛА"};if(p==="vip") return {envelope:true,music:true,video:true,dress:true,calendar:true,rsvp:true,maxPhoto:4,extra:true,tag:"🥇 АЛТЫН VIP"};return {envelope:true,music:true,video:true,dress:true,calendar:false,rsvp:false,maxPhoto:3,extra:true,tag:"🥈 КҮМІС"};}
+function onPkg(){try{var p=getPkg(),f=pkgFeatures(p);$("musicBlock").style.display=f.music?"block":"none";$("dressBlock").style.display=f.dress?"block":"none";$("extraBlock").style.display=f.extra?"block":"none";$("pkgInfo").innerHTML="Қазір: <b>"+f.tag+"</b>";}catch(e){}}
 function readFile(file,cb){var r=new FileReader();r.onload=function(e){cb(e.target.result)};r.readAsDataURL(file)}
 function onPhotoFiles(inp){var files=inp.files;if(!files.length) return;$("photoStatus").textContent="⏳ Фото жүктеліп жатыр...";var max=pkgFeatures(getPkg()).maxPhoto;var arr=Array.prototype.slice.call(files).slice(0,max);UPLOADED_PHOTOS=[];var done=0;arr.forEach(function(f){readFile(f,function(data){UPLOADED_PHOTOS.push(data);done++;if(done===arr.length){$("photoPreview").src=UPLOADED_PHOTOS[0];$("photoPreview").style.display="block";$("photoStatus").textContent="✅ Фото дайын! "+UPLOADED_PHOTOS.length+" фото.";}});});}
-function onMusicFile(inp){var f=inp.files[0];if(!f) return;$("musicStatus").textContent="⏳ Ән жүктеліп жатыр...";readFile(f,function(data){UPLOADED_MUSIC=data;var a=$("musicPreview");a.src=data;a.style.display="block";$("musicStatus").textContent="✅ Өз әніңіз дайын!";});}
+function onMusicFile(inp){var f=inp.files[0];if(!f) return;$("musicStatus").textContent="⏳ Ән жүктеліп жатыр...";readFile(f,function(data){UPLOADED_MUSIC=data;var a=$("musicPreview");a.src=data;a.style.display="block";$("musicStatus").textContent="✅ Өз әніңіз дайын! Play басып тыңдап көр - 100% ойнайды!";a.play();});}
 function onVideoFile(inp){var f=inp.files[0];if(!f) return;$("videoStatus").textContent="⏳ Видео жүктеліп жатыр...";readFile(f,function(data){UPLOADED_VIDEO=data;var v=$("videoPreview");v.src=data;v.style.display="block";$("videoStatus").textContent="✅ Видео дайын!";});}
-function collect(){return {pkg:getPkg(),design:getDesign(),name:$("name").value.trim(),kind:$("kind").value,date:$("date").value,time:$("time").value,place:$("place").value.trim(),wish:$("wish").value.trim(),wa:cleanWa($("wa").value),dress:$("dress").value.trim(),video:UPLOADED_VIDEO,music:getMusic(),musicUrl:UPLOADED_MUSIC,photos:UPLOADED_PHOTOS.slice(),showTV:($("showTV")?$("showTV").checked:true)}}
+function collect(){return {pkg:getPkg(),design:getDesign(),name:$("name").value.trim(),kind:$("kind").value,date:$("date").value,time:$("time").value,place:$("place").value.trim(),wish:$("wish").value.trim(),wa:cleanWa($("wa").value),kaspi:cleanWa($("kaspi").value),dress:$("dress").value.trim(),video:UPLOADED_VIDEO,music:getMusic(),musicUrl:UPLOADED_MUSIC,photos:UPLOADED_PHOTOS.slice(),showWish:$("showWish")?$("showWish").checked:true,showWheel:$("showWheel")?$("showWheel").checked:true,showGift:$("showGift")?$("showGift").checked:true}}
 function build(d,showWatermark){
   var f=pkgFeatures(d.pkg||"prem");var designUse=d.pkg==="std"?"gold":(d.design||"gold");
   var musicUrl=f.music?(d.musicUrl||(MUSICS[d.music]?MUSICS[d.music].url:"")||""):"";var hasMusic=f.music&&!!musicUrl;
   var hasVideo=f.video&&!!d.video,hasDress=f.dress&&!!d.dress,hasCal=f.calendar&&!!d.date,hasRsvp=f.rsvp;
-  var showTV = f.showTV && d.showTV!==false;
+  var showWish=f.extra&&d.showWish!==false, showWheel=f.extra&&d.showWheel!==false, showGift=f.extra&&d.showGift!==false;
   var allPhotos=(d.photos||[]).slice(0,f.maxPhoto);var ds=d.date?new Date(d.date+"T00:00:00").toLocaleDateString("kk-KZ",{day:"numeric",month:"long",year:"numeric"}):"";var maps="https://maps.google.com/?q="+encodeURIComponent(d.place||"");
   var ownerWa=cleanWa(d.wa);if(!ownerWa||ownerWa.length<11) ownerWa=SELLER;
+  var kaspi=cleanWa(d.kaspi)||ownerWa;
   var waYes="https://wa.me/"+ownerWa+"?text="+encodeURIComponent("Сәлеметсіз бе! "+(d.name||"Той")+" тойына КЕЛЕМІН ✅ Аты-жөнім: ");
   var wa2="https://wa.me/"+ownerWa+"?text="+encodeURIComponent("Сәлеметсіз бе! "+(d.name||"Той")+" тойына 2 адаммен келемін ✅ ");
   var waNo="https://wa.me/"+ownerWa+"?text="+encodeURIComponent("Сәлеметсіз бе! "+(d.name||"Той")+" тойына келе алмаймын ");
@@ -219,10 +212,12 @@ function build(d,showWatermark){
   var photoHtml=allPhotos.length?'<div style="padding:7px;background:'+th.grad+';border-radius:20px;margin:12px 0"><img src="'+allPhotos[0]+'" style="width:100%;display:block;border-radius:14px;aspect-ratio:4/3;object-fit:cover"></div>':'<div style="background:#fff0f3;border:2px dashed #ff8fab;border-radius:16px;padding:18px;margin:12px 0;font-size:14px;color:#888">🖼️ Фото жоқ</div>';
   var other=f.maxPhoto>1?allPhotos.slice(1).map(function(u){return '<img src="'+u+'" style="width:100%;border-radius:14px;margin:6px 0">'}).join(""):"";
   var btn='display:block;padding:14px;border-radius:14px;background:#fff;border:2px solid #b4530f;color:#b4530f;text-decoration:none;margin:10px 0;font-family:system-ui,sans-serif;font-weight:700';
-  var musicHtml=hasMusic?'<audio id="mus" loop><source src="'+musicUrl+'"></audio><button id="bellBtn" onclick="var a=document.getElementById(\'mus\');var b=document.getElementById(\'bellBtn\');if(a.paused){a.play();b.textContent=\'🔕\';b.style.background=\'#ff0000\'}else{a.pause();b.textContent=\'🔔\';b.style.background=\'#fff\'}" style="position:fixed;top:12px;right:12px;z-index:100;width:48px;height:48px;border-radius:50%;border:2px solid #ffd700;background:#fff;font-size:24px;cursor:pointer;padding:0">🔔</button><div style="background:#fff0f3;border:2px solid '+th.ac+';border-radius:12px;padding:8px;margin:8px 0"><div style="font-size:13px;font-weight:700;color:'+th.ac+'">🎵 Ән</div><audio controls loop style="width:100%;margin-top:6px"><source src="'+musicUrl+'"></audio></div>':"";
+  var musicHtml=hasMusic?'<audio id="mus" loop><source src="'+musicUrl+'"></audio><button id="bellBtn" onclick="var a=document.getElementById(\'mus\');var b=document.getElementById(\'bellBtn\');if(a.paused){a.play();b.textContent=\'🔕\';b.style.background=\'#ff0000\'}else{a.pause();b.textContent=\'🔔\';b.style.background=\'#fff\'}" style="position:fixed;top:12px;right:12px;z-index:100;width:48px;height:48px;border-radius:50%;border:2px solid #ffd700;background:#fff;font-size:24px;cursor:pointer;padding:0">🔔</button><div style="background:#fff0f3;border:2px solid '+th.ac+';border-radius:12px;padding:8px;margin:8px 0"><div style="font-size:13px;font-weight:700;color:'+th.ac+'">🎵 Ән - қоңырауды немесе төмендегі Play-ді бас</div><audio controls loop style="width:100%;margin-top:6px"><source src="'+musicUrl+'"></audio></div>':"";
   var videoHtml=hasVideo?'<div style="margin:10px 0"><video controls style="width:100%;border-radius:14px;background:#000" src="'+d.video+'"></video></div>':"";
-  // 📺 TV ШАҚЫРТУДЫҢ ІШІНДЕ
-  var tvHtml=showTV?'<div style="background:#111;border-radius:16px;padding:10px;border:3px solid #ffd700;margin:12px 0;text-align:left"><div style="display:flex;justify-content:space-between;color:#fff;font-size:13px;font-weight:700;margin-bottom:8px"><span id="tvNow2">📺 Qazaqstan TV</span><span style="background:#ff0000;color:#fff;border-radius:20px;padding:2px 8px;font-size:11px">● LIVE</span></div><div style="width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden"><iframe id="tvFrame2" src="https://www.youtube-nocookie.com/embed/4mS98wFcHKQ?autoplay=0&mute=1" style="width:100%;height:100%;border:0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-top:8px"><button onclick="setTV2(\'qazaqstan\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#ff0000;color:#fff;font-weight:700;cursor:pointer">Qazaqstan</button><button onclick="setTV2(\'khabar24\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">24KZ</button><button onclick="setTV2(\'qazsport\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">Qazsport</button><button onclick="setTV2(\'astana\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">Astana</button><button onclick="setTV2(\'ktk\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">КТК</button><button onclick="setTV2(\'kanal31\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">31 канал</button><button onclick="setTV2(\'elarna\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">El Arna</button><button onclick="setTV2(\'jibek\',this)" style="padding:8px 2px;font-size:11px;border-radius:8px;border:2px solid #ddd;background:#fff;font-weight:700;cursor:pointer">Jibek</button></div><a href="https://www.youtube.com/@qazaqstantv/live" target="_blank" style="display:block;text-align:center;color:#ffd700;font-size:12px;margin-top:8px">▶️ YouTube-та ашу</a></div><script>var TV2={qazaqstan:{name:"📺 Qazaqstan TV",embed:"https://www.youtube-nocookie.com/embed/4mS98wFcHKQ?autoplay=1&mute=1"},khabar24:{name:"📰 24KZ",embed:"https://www.youtube.com/embed/live_stream?channel=UC4VxY8V4r8xYv1XkK2Q2A"},qazsport:{name:"⚽ Qazsport",embed:"https://www.youtube.com/embed/live_stream?channel=UCqazsport"},astana:{name:"🏙️ Astana TV",embed:"https://www.youtube.com/embed/live_stream?channel=UCAstanaTV"},ktk:{name:"📺 КТК",embed:"https://www.youtube.com/embed/live_stream?channel=UCKTK"},kanal31:{name:"🎬 31 канал",embed:"https://www.youtube.com/embed/live_stream?channel=UC31kanal"},elarna:{name:"🌸 El Arna",embed:"https://www.youtube.com/embed/live_stream?channel=UCelarna"},jibek:{name:"🧵 Jibek Joly",embed:"https://www.youtube.com/embed/live_stream?channel=UCjibek"}};function setTV2(k,btn){document.getElementById("tvNow2").textContent=TV2[k].name;document.getElementById("tvFrame2").src=TV2[k].embed;var btns=btn.parentElement.querySelectorAll("button");btns.forEach(function(b){b.style.background="#fff";b.style.color="#111"});btn.style.background="#ff0000";btn.style.color="#fff";}<\/script>':"";
+  // ТІЛЕК + ОЙЫН + СЫЙЛЫҚ - ТВ ОРНЫНА
+  var wishHtml=showWish?'<div style="background:#fff0f3;border:2px solid #db2777;border-radius:14px;padding:12px;margin:12px 0;text-align:left"><b>💌 Тілек қабырғасы</b><p style="font-size:13px;color:#666;margin:6px 0">Той иесіне тілегіңді жаз - ол бірден WhatsApp-пен барады:</p><input id="wishInput" placeholder="Мысалы: Алиханға бақыт тілеймін! 🥳" style="width:100%;padding:11px;border:1px solid #e6dccb;border-radius:10px;box-sizing:border-box"><input id="wishName" placeholder="Аты-жөнің" style="width:100%;padding:11px;border:1px solid #e6dccb;border-radius:10px;box-sizing:border-box;margin-top:6px"><button onclick="var t=document.getElementById(\'wishInput\').value;var n=document.getElementById(\'wishName\').value;if(!t){alert(\'Тілегіңді жазшы!\');return}window.open(\'https://wa.me/'+ownerWa+'?text=\'+encodeURIComponent(\'💌 Тілек! \'+n+\': \'+t+\' - \'+d.name+\' тойына\'),\'_blank\')" style="width:100%;padding:12px;border:0;border-radius:10px;background:#db2777;color:#fff;font-weight:700;cursor:pointer;margin-top:6px">💌 Тілекті жіберу</button></div>':"";
+  var wheelHtml=showWheel?'<div style="background:#fff7ed;border:2px solid #ffaa00;border-radius:14px;padding:12px;margin:12px 0"><b>🎲 Бақытты дөңгелек</b><p style="font-size:13px;color:#666">Дөңгелекті айналдыр - саған қандай тілек түседі?</p><div id="wheelRes" style="font-size:18px;font-weight:700;color:#b4530f;min-height:28px;margin:8px 0">🎲 Басып көр!</div><button onclick="var arr=[\'🎉 Сізге биыл үлкен қуаныш келеді!\',\'💖 Сізді үлкен махаббат күтіп тұр!\',\'💰 Сізге биыл мол байлық келеді!\',\'✈️ Сіз биыл саяхатқа шығасыз!\',\'👶 Отбасыңызға сәби келеді!\',\'🏠 Жаңа үйлі боласыз!\',\'🌟 Жолыңыз ашық, бақытты боласыз!\'];document.getElementById(\'wheelRes\').textContent=arr[Math.floor(Math.random()*arr.length)]" style="width:100%;padding:14px;border:0;border-radius:12px;background:linear-gradient(135deg,#ffaa00,#ff6b00);color:#fff;font-weight:700;font-size:16px;cursor:pointer">🎲 Дөңгелекті айналдыру</button></div>':"";
+  var giftHtml=showGift?'<div style="background:#e7f8ec;border:2px solid #1a7a3a;border-radius:14px;padding:12px;margin:12px 0"><b>🎁 Сыйлық жіберу</b><p style="font-size:13px;color:#666">Той иесіне сыйлық жібергің келсе:</p><div style="background:#fff;border:1px dashed #1a7a3a;border-radius:10px;padding:10px;font-weight:700">Kaspi: +'+kaspi+'</div><button onclick="try{navigator.clipboard.writeText(\'+\'+ \''+kaspi+'\' );alert(\'✅ Kaspi нөмірі көшірілді!\')}catch(e){prompt(\'Көшіріп ал:\',\''+kaspi+'\')}" style="width:100%;padding:12px;border:0;border-radius:10px;background:#1a7a3a;color:#fff;font-weight:700;cursor:pointer;margin-top:8px">📋 Kaspi нөмірін көшіру</button></div>':"";
   var dressHtml=hasDress&&d.dress?'<div style="background:#fff0f3;border:1px solid #e6c84a;border-radius:12px;padding:10px;margin:12px 0;font-size:14px">👔 <b>Дресс-код:</b> '+esc(d.dress)+'</div>':"";
   var calHtml=hasCal?'<a style="'+btn+'" target="_blank" href="'+esc(calUrl)+'">📅 Календарға қосу</a>':"";
   var rb='flex:1;background:#fff;border:1px solid #bcd3ff;border-radius:10px;padding:10px 4px;text-decoration:none;color:#1a3a6a;font-size:13px;font-weight:600;text-align:center';
@@ -232,7 +227,7 @@ function build(d,showWatermark){
   var css='body{margin:0;background:'+th.bg+';font:17px/1.6 '+th.font+';text-align:center}.w{max-width:480px;margin:0 auto;padding:20px 14px}.card{background:'+th.card+';border-radius:26px;padding:26px 18px;border:2px solid '+th.ac2+';color:'+cardTx+'}.t{display:flex;gap:8px;justify-content:center;margin:14px 0}.t div{flex:1;padding:10px 4px;border-radius:14px;background:#fff;border:1px solid '+th.ac2+'}.t b{display:block;font-size:24px;color:'+th.ac+'}.t span{font-size:11px;color:#888}.b{display:block;padding:14px;border-radius:14px;background:'+th.grad+';color:'+th.btnTx+';text-decoration:none;margin:10px 0;font-weight:700}.b.o{background:#fff;border:2px solid '+th.ac+';color:'+th.ac+'}#e{position:fixed;inset:0;background:'+th.envBg+';z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;color:'+th.envTx+';padding:20px}#e.x{display:none}#e button{border:0;padding:16px 40px;border-radius:100px;background:'+th.grad+';color:'+th.btnTx+';font-weight:700;font-size:18px;cursor:pointer}';
   var env=f.envelope?'<div id="e"><div style="font-size:70px">'+th.emoji+'</div><div style="font-size:14px">АҚ КӨГЕРШІН СІЗГЕ ХАТ ӘКЕЛДІ</div><div style="font-size:90px">💌</div><div>💖 💗 💓 💖 💗</div><h2 style="font-size:26px">Сізге шақырту келді</h2><div style="color:'+th.ac+';font-size:21px;font-weight:700">'+esc(d.name)+' • '+esc(d.kind)+'</div><button onclick="document.getElementById(\'e\').className=\'x\'">✉️ Ашу</button></div>':'';
   var timer=target?'<div class="t"><div><b id="dd">--</b><span>күн</span></div><div><b id="hh">--</b><span>сағат</span></div><div><b id="mm">--</b><span>мин</span></div><div><b id="ss">--</b><span>сек</span></div></div><script>var T=new Date("'+target+'").getTime();setInterval(function(){var s=Math.max(0,Math.floor((T-Date.now())/1000));document.getElementById("dd").textContent=Math.floor(s/86400);document.getElementById("hh").textContent=Math.floor(s%86400/3600);document.getElementById("mm").textContent=Math.floor(s%3600/60);document.getElementById("ss").textContent=s%60},1000);<\/script>':"";
-  return '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.name)+'</title><style>'+css+'</style></head><body>'+watermark+musicHtml+env+'<div class="w"><div class="card"><div style="font-size:28px">'+th.emoji+' 💖</div><p style="color:#888">'+esc(d.kind)+'</p><h1 style="font-size:32px">'+esc(d.name)+'</h1>'+photoHtml+other+'<p style="font-size:20px;font-weight:700;color:'+th.ac+'">'+esc(ds)+' • '+(d.time||"")+'</p><p>'+esc(d.place)+'</p><p>'+esc(d.wish)+'</p>'+timer+videoHtml+tvHtml+dressHtml+calHtml+rsvpHtml+'<a class="b" target="_blank" href="'+esc(maps)+'">📍 Картадан қарау</a><a class="b o" target="_blank" href="'+esc(waYes)+'">✅ Келемін - Той иесіне жазу</a></div></div></body></html>';
+  return '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.name)+'</title><style>'+css+'</style></head><body>'+watermark+musicHtml+env+'<div class="w"><div class="card"><div style="font-size:28px">'+th.emoji+' 💖</div><p style="color:#888">'+esc(d.kind)+'</p><h1 style="font-size:32px">'+esc(d.name)+'</h1>'+photoHtml+other+'<p style="font-size:20px;font-weight:700;color:'+th.ac+'">'+esc(ds)+' • '+(d.time||"")+'</p><p>'+esc(d.place)+'</p><p>'+esc(d.wish)+'</p>'+timer+videoHtml+wishHtml+wheelHtml+giftHtml+dressHtml+calHtml+rsvpHtml+'<a class="b" target="_blank" href="'+esc(maps)+'">📍 Картадан қарау</a><a class="b o" target="_blank" href="'+esc(waYes)+'">✅ Келемін - Той иесіне жазу</a></div></div></body></html>';
 }
 function openViewer(html,guest){try{var v=$("viewer");v.classList.toggle("guest",!!guest);v.classList.add("show");var f=$("viewerFrame");var blob=new Blob([html],{type:"text/html"});f.src=URL.createObjectURL(blob);}catch(e){var w=window.open("","_blank");if(w)w.document.write(html);}}
 function closeViewer(){ $("viewer").classList.remove("show"); }
@@ -244,9 +239,8 @@ function askCode(){$("codeMsg").style.display="block";var d=lastData||collect();
 function sendCodeRequest(){var d=lastData||collect();window.open("https://wa.me/"+SELLER+"?text="+encodeURIComponent("Сәлем! Төледім ✅ Аты: "+d.name+" Той: "+d.kind+" "+d.date+" Пакет: "+d.pkg+" - "+PRICE[d.pkg]+" тг Чекті жібердім, маған КОД жіберші"),"_blank")}
 function getUsed(){try{return JSON.parse(localStorage.getItem("usedCodes")||"[]")}catch(e){return[]}}
 function checkCode(){var v=($("code").value||"").trim().toUpperCase();if(CODES.indexOf(v)==-1){alert("❌ Код қате");return}if(getUsed().indexOf(v)>-1){alert("❌ Бұл код бұрын қолданылған!");return}try{var u=getUsed();u.push(v);localStorage.setItem("usedCodes",JSON.stringify(u));}catch(e){}unlocked=true;$("dw").style.display="block";$("cd").style.display="none";alert("✅ Код қабылданды!")}
-function copyUsed(){var u=getUsed();try{navigator.clipboard.writeText(u.join("\n"));alert("Көшірілді!")}catch(e){prompt("Көшіріп ал:",u.join("\n"))}}
 function previewInvite(){var d=lastData||collect();openViewer(build(d,false),true)}
-function downloadInvite(){var d=lastData||collect();var html=build(d,false);var blob=new Blob([html],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="shaqyrtu-"+(d.name||"toy")+".html";a.click();alert("✅ Шақырту жүктелді! ТВ-мен бірге!")}
+function downloadInvite(){var d=lastData||collect();var html=build(d,false);var blob=new Blob([html],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="shaqyrtu-"+(d.name||"toy")+".html";a.click();alert("✅ Шақырту жүктелді!")}
 try{renderMusics();onPkg();}catch(e){}
 </script>
 </body>
