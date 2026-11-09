@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#241707">
+<title>Тойға ерекше шақырту</title>
+<style>
+:root{--brown:#241707;--gold:#c69b35;--cream:#fbf7ef;--line:#e8ddca;--green:#168044}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:#2d251b;font:16px/1.5 system-ui,-apple-system,sans-serif}
+.wrap{max-width:650px;margin:auto;padding:14px}
+.hero{padding:28px 18px;text-align:center;color:#fff;border-radius:22px;background:radial-gradient(circle at top,#594019,#1b1207 70%);border:2px solid #d5ae4b}
+.hero .crown{font-size:38px}.hero h1{font-family:Georgia,serif;font-size:30px;line-height:1.2;margin:12px 0;color:#ffe6a0}
+.hero p{color:#f6e8c9;margin:8px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 3px 12px #38250a0a}
+h2{font-size:18px;margin:0 0 12px}
+label.field{display:block;font-size:14px;color:#756650;margin:10px 0 5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d9cdb9;border-radius:10px;background:#fff;font:inherit;color:#2d251b}
+textarea{min-height:85px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button,.button{display:block;width:100%;padding:13px 15px;margin-top:9px;border:0;border-radius:12px;background:#a86a12;color:white;font:700 16px system-ui;cursor:pointer;text-align:center;text-decoration:none}
+button.secondary{background:#fff;color:#945d12;border:2px solid #b77c24}
+button.green{background:#168044}
+button.dark{background:#241707}
+button:disabled{opacity:.55;cursor:not-allowed}
+.note{font-size:13px;color:#796d5c;margin:7px 0 0}
+.tip{padding:12px;background:#eef8f0;border:1px solid #b9e3c3;border-radius:12px;font-size:13px}
+.package{display:block;border:2px solid var(--line);border-radius:14px;padding:13px;margin:9px 0;cursor:pointer}
+.package input{width:auto;margin-right:7px}
+.package strong{font-size:16px}
+.package small{display:block;margin:5px 0 0 25px;line-height:1.5}
+.package:has(input:checked){border-color:#a86a12;background:#fff9ed}
+.designs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.design{border:2px solid var(--line);border-radius:12px;padding:8px;text-align:center;font-size:13px;cursor:pointer}
+.design input{width:auto}
+.swatch{height:34px;border-radius:8px;margin-bottom:6px}
+.design:has(input:checked){border-color:#a86a12;background:#fff9ed}
+.upload{padding:12px;border:1px solid #d9e4f2;background:#f4f8ff;border-radius:12px;margin:10px 0}
+.upload input{padding:8px;background:white}
+.preview{display:none;width:100%;max-height:240px;object-fit:contain;border-radius:10px;margin-top:8px;background:#eee}
+.status{font-size:13px;color:#52705b;margin:6px 0}
+#result{display:none}
+#viewer{position:fixed;inset:0;background:#1b1207;z-index:50;display:none;flex-direction:column}
+#viewer.open{display:flex}
+.viewerbar{display:flex;gap:8px;padding:8px;background:#1b1207}
+.viewerbar button{margin:0;flex:1;font-size:14px;padding:10px}
+#previewFrame{width:100%;height:100%;border:0;background:white}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div id="viewer">
+  <div class="viewerbar">
+    <button class="secondary" onclick="closePreview()">← Артқа</button>
+    <button onclick="downloadInvite()">⬇️ HTML жүктеу</button>
+  </div>
+  <iframe id="previewFrame" title="Шақырту үлгісі"></iframe>
+</div>
+
+<main class="wrap" id="app">
+  <header class="hero">
+    <div class="crown">👑</div>
+    <div style="letter-spacing:2px;font-size:13px">ЕРЕКШЕ ШАҚЫРТУ</div>
+    <h1>Бір сілтеме —<br>бір үлкен қуаныш</h1>
+    <p>Тойыңыздың мәліметі, суреті, картасы мен әуені — бір әдемі шақыртуда.</p>
+  </header>
+
+  <section class="card">
+    <h2>1. Қызмет пакетін таңдаңыз</h2>
+    <label class="package"><input type="radio" name="pkg" value="basic" checked onchange="updatePackage()"><strong>🥉 ҚОЛА — 3 000 ₸</strong><small>1 фото · Той мәліметі · Карта · Кері санақ</small></label>
+    <label class="package"><input type="radio" name="pkg" value="silver" onchange="updatePackage()"><strong>🥈 КҮМІС — 5 000 ₸</strong><small>3 фото · Конверт · Музыка · Видео · Дресс-код</small></label>
+    <label class="package"><input type="radio" name="pkg" value="gold" onchange="updatePackage()"><strong>🥇 АЛТЫН — 10 000 ₸</strong><small>4 фото · Күміс пакеттегі мүмкіндіктер · Күнтізбе · RSVP батырмалары</small></label>
+    <p class="note" id="packageInfo">Қола пакет таңдалды.</p>
+  </section>
+
+  <section class="card">
+    <h2>2. Шақырту дизайны</h2>
+    <div class="designs">
+      <label class="design"><div class="swatch" style="background:linear-gradient(135deg,#201505,#76551b)"></div><input type="radio" name="design" value="gold" checked> Алтын</label>
+      <label class="design"><div class="swatch" style="background:linear-gradient(135deg,#ffe0e8,#c64b70)"></div><input type="radio" name="design" value="rose"> Қызғылт</label>
+      <label class="design"><div class="swatch" style="background:linear-gradient(135deg,#0d3022,#267b52)"></div><input type="radio" name="design" value="green"> Изумруд</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Той туралы мәлімет</h2>
+    <label class="field" for="eventName">Той иесінің аты-жөні</label>
+    <input id="eventName" value="Алихан, 6 жас" maxlength="90">
+    <label class="field" for="eventType">Той түрі</label>
+    <select id="eventType">
+      <option>Сүндет той</option><option>Қыз ұзату</option><option>Үйлену тойы</option>
+      <option>Мерейтой</option><option>Бесік той</option><option>Тұсаукесер</option><option>Туған күн</option>
+    </select>
+    <div class="grid">
+      <div><label class="field" for="eventDate">Күні</label><input type="date" id="eventDate"></div>
+      <div><label class="field" for="eventTime">Басталу уақыты</label><input type="time" id="eventTime" value="18:00"></div>
+    </div>
+    <label class="field" for="venue">Мейрамхана / мекенжай</label>
+    <input id="venue" placeholder="Қала, тойхана атауы">
+    <label class="field" for="wish">Қонақтарға тілек</label>
+    <textarea id="wish">Құрметті қонақтар! Қуанышымызды бөлісіп, тойымыздың қадірлі қонағы болыңыздар!</textarea>
+    <label class="field" for="ownerPhone">Той иесінің WhatsApp нөмірі</label>
+    <input id="ownerPhone" type="tel" placeholder="77012345678">
+    <p class="note">Нөмірді 7-ден бастап жазыңыз. Мысалы: 77012345678.</p>
+    <div id="dressSection" style="display:none">
+      <label class="field" for="dressCode">Дресс-код</label>
+      <input id="dressCode" placeholder="Мысалы: Қара және алтын түстер">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4. Фото, музыка және видео</h2>
+    <div class="upload">
+      <b>📷 Фото (пакетке қарай 1–4 фото)</b>
+      <input type="file" id="photos" accept="image/*" multiple>
+      <div id="photoStatus" class="status">Фото таңдалмаған.</div>
+      <div id="photoPreviews"></div>
+    </div>
+    <div class="upload" id="musicSection" style="display:none">
+      <b>🎵 Өз музыкаңызды жүктеу</b>
+      <input type="file" id="musicFile" accept="audio/*">
+      <audio id="musicPreview" controls style="display:none;width:100%;margin-top:8px"></audio>
+      <div id="musicStatus" class="status">Музыка міндетті емес.</div>
+    </div>
+    <div class="upload" id="videoSection" style="display:none">
+      <b>🎥 Қысқа видео жүктеу</b>
+      <input type="file" id="videoFile" accept="video/*">
+      <video id="videoPreview" controls style="display:none;width:100%;max-height:220px;margin-top:8px"></video>
+      <div id="videoStatus" class="status">Видео таңдалмаған.</div>
+    </div>
+    <div class="tip">Кеңес: фотоны 5 МБ-тан, видеоны 20 МБ-тан асырмаңыз. Үлкен файл шақырту көлемін үлкейтеді.</div>
+  </section>
+
+  <section class="card" id="result">
+    <h2>5. Шақыртуды дайындау</h2>
+    <p class="tip">Алдымен шақыртуды қарап шығыңыз. Дайын HTML файлын телефонға жүктеп, WhatsApp арқылы жібере аласыз.</p>
+    <button onclick="showPreview()">👀 Шақыртуды алдын ала көру</button>
+    <button class="green" onclick="downloadInvite()">⬇️ Шақырту файлын жүктеу</button>
+    <button class="secondary" onclick="shareInvite()">📲 Бөлісу</button>
+    <p class="note" id="downloadStatus"></p>
+  </section>
+
+  <button class="dark" onclick="createInvite()">✨ ШАҚЫРТУДЫ ЖАСАУ</button>
+  <p class="note" style="text-align:center">Ескерту: бұл нұсқа шақыртуды HTML файл ретінде жасайды. Интернеттегі жеке сілтеме, онлайн төлем және серверге файл сақтау үшін бөлек хостинг пен серверлік жүйе қажет.</p>
+</main>
+
+<script>
+"use strict";
+const PACKAGE = {
+  basic:{price:3000,maxPhotos:1,extras:false,calendar:false,rsvp:false,label:"ҚОЛА"},
+  silver:{price:5000,maxPhotos:3,extras:true,calendar:false,rsvp:false,label:"КҮМІС"},
+  gold:{price:10000,maxPhotos:4,extras:true,calendar:true,rsvp:true,label:"АЛТЫН"}
+};
+let photoData=[],musicData="",videoData="",inviteHTML="";
+
+const $ = id => document.getElementById(id);
+const selected = name => document.querySelector('input[name="'+name+'"]:checked')?.value;
+const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+const readFile = file => new Promise((resolve,reject)=>{
+  const reader=new FileReader();
+  reader.onload=()=>resolve(reader.result);
+  reader.onerror=()=>reject(new Error("Файлды оқу мүмкін болмады."));
+  reader.readAsDataURL(file);
+});
+function getPackage(){return PACKAGE[selected("pkg")||"basic"];}
+function updatePackage(){
+  const p=getPackage();
+  $("packageInfo").textContent=p.label+" пакеті · "+p.price.toLocaleString("kk-KZ")+" ₸";
+  $("musicSection").style.display=p.extras?"block":"none";
+  $("videoSection").style.display=p.extras?"block":"none";
+  $("dressSection").style.display=p.extras?"block":"none";
+  if(photoData.length>p.maxPhotos){
+    photoData=photoData.slice(0,p.maxPhotos);
+    renderPhotoPreviews();
+  }
+}
+$("photos").addEventListener("change",async e=>{
+  const files=Array.from(e.target.files||[]);
+  const max=getPackage().maxPhotos;
+  if(files.length>max) $("photoStatus").textContent="Пакет бойынша алғашқы "+max+" фото ғана алынады.";
+  const chosen=files.slice(0,max);
+  try{
+    if(chosen.some(f=>f.size>5*1024*1024)) throw new Error("Әр фото 5 МБ-тан аспауы керек.");
+    photoData=await Promise.all(chosen.map(readFile));
+    renderPhotoPreviews();
+    $("photoStatus").textContent="✅ "+photoData.length+" фото дайын.";
+  }catch(err){photoData=[];renderPhotoPreviews();$("photoStatus").textContent="❌ "+err.message;}
+});
+function renderPhotoPreviews(){
+  $("photoPreviews").innerHTML=photoData.map(src=>'<img class="preview" style="display:block;max-height:130px;width:auto;max-width:100%;margin:7px 0" src="'+src+'" alt="Таңдалған фото">').join("");
+}
+$("musicFile").addEventListener("change",async e=>{
+  const f=e.target.files[0];if(!f)return;
+  if(f.size>15*1024*1024){$("musicStatus").textContent="❌ Ән 15 МБ-тан аспауы керек.";return;}
+  try{musicData=await readFile(f);$("musicPreview").src=musicData;$("musicPreview").style.display="block";$("musicStatus").textContent="✅ Ән дайын.";}
+  catch(err){$("musicStatus").textContent="❌ "+err.message;}
+});
+$("videoFile").addEventListener("change",async e=>{
+  const f=e.target.files[0];if(!f)return;
+  if(f.size>20*1024*1024){$("videoStatus").textContent="❌ Видео 20 МБ-тан аспауы керек.";return;}
+  try{videoData=await readFile(f);$("videoPreview").src=videoData;$("videoPreview").style.display="block";$("videoStatus").textContent="✅ Видео дайын.";}
+  catch(err){$("videoStatus").textContent="❌ "+err.message;}
+});
+function phoneNumber(){
+  let n=$("ownerPhone").value.replace(/\D/g,"");
+  if(n.startsWith("8")&&n.length===11)n="7"+n.slice(1);
+  if(n.length===10)n="7"+n;
+  return n.length>=11?n:"";
+}
+function collectData(){
+  const pkg=selected("pkg")||"basic",p=PACKAGE[pkg];
+  return {
+    pkg,design:selected("design")||"gold",
+    name:$("eventName").value.trim(),type:$("eventType").value,
+    date:$("eventDate").value,time:$("eventTime").value,
+    venue:$("venue").value.trim(),wish:$("wish").value.trim(),
+    phone:phoneNumber(),dress:$("dressCode").value.trim(),
+    photos:photoData.slice(0,p.maxPhotos),
+    music:p.extras?musicData:"",video:p.extras?videoData:""
+  };
+}
+function makeInvitation(d){
+  const themes={
+    gold:{bg:"#241707",accent:"#c69b35",paper:"#fffaf0",text:"#302313"},
+    rose:{bg:"#6c263e",accent:"#d65b83",paper:"#fff7fa",text:"#542536"},
+    green:{bg:"#0e3023",accent:"#c9a64b",paper:"#fffdf4",text:"#183b2c"}
+  };
+  const t=themes[d.design]||themes.gold;
+  const dateText=d.date?new Date(d.date+"T12:00:00").toLocaleDateString("kk-KZ",{day:"numeric",month:"long",year:"numeric"}):"";
+  const mapURL="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(d.venue||"");
+  const wa=d.phone||"";
+  const waLink=(msg)=>wa?"https://wa.me/"+wa+"?text="+encodeURIComponent(msg):"";
+  const photos=d.photos.map(src=>'<img src="'+src+'" alt="Той суреті" style="width:100%;border-radius:15px;margin:7px 0;object-fit:cover">').join("");
+  const music=d.music?'<div class="media"><p>🎵 Той әуені</p><audio controls loop src="'+d.music+'"></audio></div>':"";
+  const video=d.video?'<div class="media"><p>🎥 Арнайы видео</p><video controls playsinline src="'+d.video+'"></video></div>':"";
+  const dress=d.dress?'<p class="dress">👔 Дресс-код: '+escapeHTML(d.dress)+'</p>':"";
+  const cal=d.pkg==="gold"&&d.date?'<a class="btn outline" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(d.name+" — "+d.type)+'&dates='+d.date.replaceAll("-","")+'T'+(d.time||"18:00").replace(":","")+'00/'+d.date.replaceAll("-","")+'T220000&location='+encodeURIComponent(d.venue)+'">📅 Күнтізбеге қосу</a>':"";
+  const rsvp=d.pkg==="gold"&&wa?'<div class="rsvp"><b>Қатысуыңызды растаңыз</b><a target="_blank" rel="noopener" href="'+waLink("Сәлеметсіз бе! "+d.name+" тойына келемін. Аты-жөнім: ")+'">✅ Келемін</a><a target="_blank" rel="noopener" href="'+waLink("Сәлеметсіз бе! "+d.name+" тойына келе алмаймын.")+'">❌ Келе алмаймын</a></div>':"";
+  const envelope=d.pkg!=="basic"?'<div id="envelope"><div style="font-size:68px">💌</div><h2>Сізге шақырту келді</h2><p>'+escapeHTML(d.name)+'</p><button onclick="document.getElementById(\\'envelope\\').remove()">Шақыртуды ашу</button></div>':"";
+  const target=d.date?new Date(d.date+"T"+(d.time||"18:00")+":00").getTime():0;
+  return '<!doctype html><html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escapeHTML(d.name)+'</title><style>'+
+  '*{box-sizing:border-box}body{margin:0;background:'+t.bg+';font:17px/1.6 Georgia,serif;text-align:center;color:'+t.text+'}.wrap{max-width:500px;margin:auto;padding:18px}.card{background:'+t.paper+';border:2px solid '+t.accent+';border-radius:24px;padding:24px 17px;box-shadow:0 10px 30px #0004}.orn{font-size:32px;color:'+t.accent+'}h1{font-size:32px;line-height:1.2;margin:8px 0;color:'+t.accent+'}.date{font-size:20px;font-weight:bold;color:'+t.accent+'}.btn{display:block;background:'+t.accent+';color:#201707;text-decoration:none;padding:13px;border-radius:12px;margin:10px 0;font:700 15px system-ui}.outline{background:white;border:2px solid '+t.accent+'}.media{margin:14px 0;padding:12px;background:#f6eee0;border-radius:14px}.media audio,.media video{width:100%}.dress{padding:10px;background:#f5ead2;border-radius:10px}.timer{display:flex;gap:6px;margin:16px 0}.timer div{flex:1;background:#fff;border:1px solid '+t.accent+';border-radius:10px;padding:8px 2px}.timer b{display:block;font-size:22px;color:'+t.accent+'}.timer small{font-size:11px}.rsvp{background:#f2f6ff;padding:12px;border-radius:12px;margin:14px 0}.rsvp a{display:block;padding:9px;margin:7px 0;background:white;border:1px solid #9bb4df;border-radius:9px;text-decoration:none;color:#234}.wish{white-space:pre-wrap}#envelope{position:fixed;inset:0;background:#fff0f3;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;color:#64283b}#envelope button{border:0;border-radius:30px;padding:14px 30px;background:'+t.accent+';font-weight:bold;font-size:17px}'+
+  '</style></head><body>'+envelope+'<main class="wrap"><article class="card"><div class="orn">🕊️ ✨ 🕊️</div><p>'+escapeHTML(d.type)+'</p><h1>'+escapeHTML(d.name)+'</h1>'+photos+'<p class="date">'+escapeHTML(dateText)+'<br>'+escapeHTML(d.time)+'</p><p>📍 '+escapeHTML(d.venue)+'</p><p class="wish">'+escapeHTML(d.wish)+'</p>'+(target?'<div class="timer"><div><b id="days">0</b><small>күн</small></div><div><b id="hours">0</b><small>сағат</small></div><div><b id="mins">0</b><small>минут</small></div><div><b id="secs">0</b><small>секунд</small></div></div><script>const end='+target+';function tick(){let s=Math.max(0,Math.floor((end-Date.now())/1000));document.getElementById("days").textContent=Math.floor(s/86400);document.getElementById("hours").textContent=Math.floor(s%86400/3600);document.getElementById("mins").textContent=Math.floor(s%3600/60);document.getElementById("secs").textContent=s%60}tick();setInterval(tick,1000);<\/script>':"")+music+video+dress+cal+rsvp+'<a class="btn" target="_blank" rel="noopener" href="'+mapURL+'">📍 Картаны ашу</a>'+(wa?'<a class="btn outline" target="_blank" rel="noopener" href="'+waLink("Сәлеметсіз бе! "+d.name+" тойына келемін.")+'">📲 Той иесіне жазу</a>':"")+'</article></main></body></html>';
+}
+function createInvite(){
+  const d=collectData();
+  if(!d.name){alert("Той иесінің атын енгізіңіз.");$("eventName").focus();return;}
+  if(!d.date){alert("Той күнін таңдаңыз.");$("eventDate").focus();return;}
+  if(!d.venue){alert("Тойхана немесе мекенжайды енгізіңіз.");$("venue").focus();return;}
+  if(d.phone&&d.phone.length<11){alert("WhatsApp нөмірін 77012345678 үлгісінде енгізіңіз.");$("ownerPhone").focus();return;}
+  inviteHTML=makeInvitation(d);
+  $("result").style.display="block";
+  $("result").scrollIntoView({behavior:"smooth",block:"start"});
+  $("downloadStatus").textContent="✅ Шақырту дайын. Алдын ала қарап шығыңыз.";
+}
+function showPreview(){
+  if(!inviteHTML){alert("Алдымен шақыртуды жасаңыз.");return;}
+  $("previewFrame").srcdoc=inviteHTML;
+  $("viewer").classList.add("open");
+}
+function closePreview(){$("viewer").classList.remove("open");$("previewFrame").srcdoc="";}
+function downloadInvite(){
+  if(!inviteHTML){alert("Алдымен шақыртуды жасаңыз.");return;}
+  const blob=new Blob([inviteHTML],{type:"text/html;charset=utf-8"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download="shaqyrtu.html";document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+  $("downloadStatus").textContent="Файл жүктелді. Оны телефонның Жүктеулер (Downloads) бумасынан таба аласыз.";
+}
+async function shareInvite(){
+  if(!inviteHTML){alert("Алдымен шақыртуды жасаңыз.");return;}
+  const file=new File([inviteHTML],"shaqyrtu.html",{type:"text/html"});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file],title:"Тойға шақырту",text:"Сізді тойымызға шақырамыз!"});}
+    catch(e){if(e.name!=="AbortError")alert("Бөлісу мүмкін болмады. Файлды жүктеп, WhatsApp арқылы тіркеңіз.");}
+  }else{
+    downloadInvite();
+    alert("Бұл телефонда файлды тікелей бөлісу қолжетімсіз. Жүктелген HTML файлын WhatsApp-та құжат ретінде тіркеңіз.");
+  }
+}
+updatePackage();
+</script>
+</body>
+</html>
