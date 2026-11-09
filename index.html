@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Тойға Ерекше Шақырту - Бір сілтеме, жүздеген қуанышты қонақ</title>
+<title>Тойға Ерекше Шақырту</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#faf6ef;color:#2a2118;font:16px/1.5 system-ui,sans-serif}
 .w{max-width:560px;margin:0 auto;padding:16px}
 .c{background:#fff;border:1px solid #e6dccb;border-radius:14px;padding:14px;margin-bottom:14px}
-h1{font-size:23px}h2{font-size:16px;margin:0 0 10px}
+h2{font-size:16px;margin:0 0 10px}
 label.f{display:block;font-size:14px;color:#7a6a58;margin:10px 0 4px}
 input,select,textarea{width:100%;padding:11px;border:1px solid #e6dccb;border-radius:10px;background:#faf6ef;font:inherit}
 textarea{min-height:70px}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -17,8 +17,6 @@ button.g{background:#fff;color:#b4530f;border:2px solid #b4530f}
 button.wa{background:#25D366;color:#fff}
 button.small{padding:11px;font-size:14px}
 button.blue{background:#2563eb}
-button.pink{background:#db2777}
-button.dark{background:#1a1405}
 .n{font-size:13px;color:#7a6a58;margin-top:6px}
 .tip{background:#e7f8ec;border:2px solid #1a7a3a;border-radius:10px;padding:11px;font-size:13px;line-height:1.5}
 .step{background:#fff7ed;border:1px solid #ffaa00;border-radius:10px;padding:10px;font-size:13px;line-height:1.6;margin-top:8px}
@@ -28,11 +26,8 @@ button.dark{background:#1a1405}
 .pk label{display:block;border-radius:14px;padding:12px;cursor:pointer;margin-bottom:10px;border:2px solid #e6dccb}
 .pk input{display:none}
 .pk label.bronze{background:linear-gradient(135deg,#8c5a2b,#cd7f32,#a97142);color:#fff}
-.pk label.bronze ul{color:#ffe8d0}
 .pk label.silver{background:linear-gradient(135deg,#d9d9d9,#f5f5f5,#b8b8b8);color:#222;border-color:#999}
-.pk label.silver ul{color:#444}
 .pk label.gold{background:linear-gradient(135deg,#b8860b,#ffd700,#ffec8b);color:#3a2400;border-color:#b8860b}
-.pk label.gold ul{color:#5a3a00}
 .pk label:has(input:checked){box-shadow:0 0 0 3px #1a1405}
 .pk ul{margin:6px 0 0;padding-left:16px;font-size:13px}.pk li.no{opacity:.45;text-decoration:line-through}
 .musics label{display:flex;gap:8px;align-items:center;border:1px solid #e6dccb;border-radius:10px;padding:9px;cursor:pointer;margin-bottom:6px}
@@ -51,23 +46,14 @@ button.dark{background:#1a1405}
 #viewerTop button.closeBtn{background:#fff;color:#1a1405}
 #viewer.guest #viewerTop{display:none !important}
 .hero{position:relative;overflow:hidden;background:#000;color:#fff;border-radius:20px;padding:30px 16px;text-align:center;border:2px solid #ffd700}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%, rgba(255,215,0,.35), transparent 40%),radial-gradient(circle at 80% 80%, rgba(255,215,0,.25), transparent 40%);animation:heroGlow 3s ease-in-out infinite}
-.hero::after{content:"✨ ⭐ ✨ 💍 ✨ ⭐ ✨";position:absolute;top:8px;left:0;right:0;font-size:18px;opacity:.9;animation:stars 2s ease-in-out infinite}
-@keyframes heroGlow{0%,100%{opacity:.5}50%{opacity:1}}
-@keyframes stars{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(-4px);opacity:1}}
-.hero>*{position:relative;z-index:2}
 .hero h1{font-size:30px;line-height:1.25;margin:12px 0}
-.hero h1 span{background:linear-gradient(90deg,#ffd700,#fff3a0,#ffd700,#ffaa00,#ffd700);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 2.5s linear infinite;font-size:32px}
-@keyframes shine{to{background-position:200% center}}
+.hero h1 span{background:linear-gradient(90deg,#ffd700,#fff3a0,#ffd700,#ffaa00,#ffd700);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:32px}
 .hero p{color:#ffe9b0;font-size:14px;line-height:1.5;margin-top:10px}
-.hero .brand{font-size:15px;letter-spacing:1px;font-weight:700;color:#fff;animation:brandPulse 2s ease-in-out infinite}
-@keyframes brandPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.hero .crown{font-size:28px;display:block;animation:crownBounce 1.8s ease-in-out infinite}
-@keyframes crownBounce{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.hero .brand{font-size:15px;letter-spacing:1px;font-weight:700;color:#fff}
+.hero .crown{font-size:28px;display:block}
 .offer{background:#e7f8ec;border:2px solid #1a7a3a;color:#111;border-radius:12px;padding:13px;font-weight:800;line-height:1.4;text-align:center;margin-bottom:14px}
 .offer small{display:block;font-weight:600;color:#1a7a3a}
-.btn-red{background:linear-gradient(135deg,#ff0000,#cc0000)!important;color:#fff!important;font-size:19px!important;padding:18px!important;box-shadow:0 0 0 0 rgba(255,0,0,.5);animation:redPulse 1.6s infinite;border:2px solid #fff!important}
-@keyframes redPulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,.6);transform:scale(1)}70%{box-shadow:0 0 0 14px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0);transform:scale(1)}}
+.btn-red{background:linear-gradient(135deg,#ff0000,#cc0000)!important;color:#fff!important;font-size:19px!important;padding:18px!important;border:2px solid #fff!important}
 .codeBox{display:none;background:#e7f8ec;border:2px solid #25D366;border-radius:12px;padding:12px;margin-top:10px}
 .adminBox{display:none;background:#111;color:#ffd700;border:2px solid #ffd700;border-radius:12px;padding:12px;margin-top:10px;font-size:13px}
 .linkCard{display:none;background:#e7f8ec;border:3px solid #1a7a3a;border-radius:14px;padding:14px;margin-top:12px}
@@ -75,57 +61,55 @@ button.dark{background:#1a1405}
 </style>
 </head>
 <body>
-<div id="viewer"><div id="viewerTop"><button class="closeBtn" onclick="closeViewer()">⬅️ Артқа</button><button onclick="goToPay()">💳 Төлемге өту</button></div><iframe id="viewerFrame"></iframe></div>
+<div id="viewer"><div id="viewerTop"><button class="closeBtn" type="button" onclick="closeViewer()">⬅️ Артқа</button><button type="button" onclick="goToPay()">💳 Төлемге өту</button></div><iframe id="viewerFrame"></iframe></div>
 <div class="w" id="mainForm">
 <div class="hero"><span class="crown">👑</span><p class="brand">ТОЙҒА ЕРЕКШЕ ШАҚЫРТУ<br>ОСЫНДА ЖАСАЙСЫҢ ✨</p><h1>Бір сілтеме —<br><span>жүздеген қуанышты қонақ ✨</span></h1><p>Қош келдің! 💍<br>Қонағың бір сілтемені басады —<br>тойыңның күні, орны, картасы, фотоң бәрі бір жерде.</p></div>
 <div style="height:14px"></div>
 <div class="offer">✅ Алдымен шақыртуыңды көріп ал, ұнаса ғана төлейсің!<small>Тәуекел жоқ. Ұнамаса - төлемейсің 💍</small></div>
-<div id="adminPanel" class="adminBox"><b>🔐 АДМИН - Тек саған көрінеді</b><br><span id="codeLeft"></span><br><span id="usedList" style="word-break:break-all"></span><br><button onclick="copyUsed()" style="background:#ffd700;color:#000;margin-top:8px">📋 Қолданылған кодтарды көшіру</button></div>
+<div id="adminPanel" class="adminBox"><b>🔐 АДМИН</b><br><span id="codeLeft"></span><br><span id="usedList"></span><br><button type="button" onclick="copyUsed()" style="background:#ffd700;color:#000;margin-top:8px">📋 Қолданылған кодтарды көшіру</button></div>
 
-<!-- ТҮЗЕТІЛДІ: 0x0.st алынып тасталды, орнына жұмыс істейтін 3 сайт -->
+<!-- ТЕК TMPFILES.ORG ҒАНА ҚАЛДЫ -->
 <div class="c" style="border:2px solid #4a90e2">
-<h2>🔗 Сілтеме жасау орталығы</h2>
-<div class="tip">⚠️ 0x0.st қазір істемей тұр (Internal Server Error). Сондықтан оны алып тастадық. Төмендегі <b>Catbox</b> ең сенімдісі - сол арқылы жасаңыз!</div>
+<h2>🔗 Сілтеме жасау - tmpfiles.org</h2>
+<div class="tip">Фото, ән, видеоның сілтемесін осы бір ғана сайттан жасайсың. Басқа сайт жоқ, шатаспайсың!</div>
 
 <div class="upBox">
 <b>📷 1. Фотоның сілтемесін жасау</b>
-<div class="step"><b>Қалай жасайсың? (30 секунд)</b><br>1️⃣ Төмендегі <b>«Catbox ашу»</b> бас<br>2️⃣ Сол жерде фотоңды таңда → <b>Upload</b> бас → сілтеме шығады → көшіріп ал<br>3️⃣ Сол сілтемені төмендегі қорапқа қой → <b>«Фото орнына қою»</b> бас</div>
-<button class="small blue" onclick="window.open('https://files.catbox.moe','_blank')">📤 1. Catbox ашу - ЕҢ СЕНІМДІ ✅</button>
-<button class="small pink" onclick="window.open('https://tmpfiles.org','_blank')">📤 2. Tmpfiles ашу (балама)</button>
-<button class="small dark" onclick="window.open('https://gofile.io/upload','_blank')">📤 3. GoFile ашу (балама)</button>
+<div class="step">1️⃣ Төмендегі батырманы бас → tmpfiles.org ашылады<br>2️⃣ <b>Upload Files</b> бас → фотоңды таңда → сілтеме шығады → көшіріп ал<br>3️⃣ Сол сілтемені төменге қой → <b>Фото орнына қою</b> бас</div>
+<button class="small blue" type="button" onclick="window.open('https://tmpfiles.org','_blank')">📤 tmpfiles.org ашу</button>
 <label class="f">Сайттан көшіріп алған сілтемені осында қой:</label>
-<input type="text" id="pastePhoto" placeholder="https://files.catbox.moe/....">
-<button class="small" style="background:#1a7a3a" onclick="applyPaste('photo')">✅ Осы сілтемені ФОТО орнына қою</button>
+<input type="text" id="pastePhoto" placeholder="https://tmpfiles.org/dl/....">
+<button class="small" type="button" style="background:#1a7a3a" onclick="applyPaste('photo')">✅ Осы сілтемені ФОТО орнына қою</button>
 <p class="n" id="stPhoto"></p>
 </div>
 
 <div class="upBox">
 <b>🎵 2. Әннің сілтемесін жасау</b>
-<div class="step">1️⃣ <b>Catbox ашу</b> → әнді жүкте → сілтемені көшіріп ал<br>2️⃣ Сілтемені төменге қой → <b>«Ән орнына қою»</b> бас</div>
-<button class="small blue" onclick="window.open('https://files.catbox.moe','_blank')">📤 Catbox ашу - Ән жүктеу</button>
-<label class="f">Сайттан көшіріп алған сілтемені осында қой:</label>
-<input type="text" id="pasteMusic" placeholder="https://files.catbox.moe/....mp3">
-<button class="small" style="background:#1a7a3a" onclick="applyPaste('music')">✅ Осы сілтемені ӘН орнына қою</button>
+<div class="step">1️⃣ <b>tmpfiles.org ашу</b> → әнді жүкте → сілтемені көшіріп ал<br>2️⃣ Сілтемені төменге қой → <b>Ән орнына қою</b> бас</div>
+<button class="small blue" type="button" onclick="window.open('https://tmpfiles.org','_blank')">📤 tmpfiles.org ашу - Ән жүктеу</button>
+<label class="f">Сілтемені осында қой:</label>
+<input type="text" id="pasteMusic" placeholder="https://tmpfiles.org/dl/....mp3">
+<button class="small" type="button" style="background:#1a7a3a" onclick="applyPaste('music')">✅ Осы сілтемені ӘН орнына қою</button>
 <p class="n" id="stMusic"></p>
 </div>
 
 <div class="upBox">
 <b>🎥 3. Видеоның сілтемесін жасау</b>
-<div class="step">1️⃣ <b>Catbox ашу</b> → видеоны жүкте → сілтемені көшіріп ал<br>2️⃣ Сілтемені төменге қой → <b>«Видео орнына қою»</b> бас</div>
-<button class="small blue" onclick="window.open('https://files.catbox.moe','_blank')">📤 Catbox ашу - Видео жүктеу</button>
-<label class="f">Сайттан көшіріп алған сілтемені осында қой:</label>
-<input type="text" id="pasteVideo" placeholder="https://files.catbox.moe/....mp4">
-<button class="small" style="background:#1a7a3a" onclick="applyPaste('video')">✅ Осы сілтемені ВИДЕО орнына қою</button>
+<div class="step">1️⃣ <b>tmpfiles.org ашу</b> → видеоны жүкте → сілтемені көшіріп ал<br>2️⃣ Сілтемені төменге қой → <b>Видео орнына қою</b> бас</div>
+<button class="small blue" type="button" onclick="window.open('https://tmpfiles.org','_blank')">📤 tmpfiles.org ашу - Видео жүктеу</button>
+<label class="f">Сілтемені осында қой:</label>
+<input type="text" id="pasteVideo" placeholder="https://tmpfiles.org/dl/....mp4">
+<button class="small" type="button" style="background:#1a7a3a" onclick="applyPaste('video')">✅ Осы сілтемені ВИДЕО орнына қою</button>
 <p class="n" id="stVideo"></p>
 </div>
-<div class="tip" style="margin-top:10px">🆘 <b>Ешқайсысы істемесе:</b> Фото/әнді маған WhatsApp-пен жібер, мен сілтемесін жасап беремін! <button class="small wa" onclick="window.open('https://wa.me/77082418836?text='+encodeURIComponent('Сәлем! Фото/әннің сілтемесін жасап берші'),' _blank')">📲 WhatsApp-қа жіберу</button></div>
+<div class="tip" style="margin-top:10px">⚠️ <b>Назар аудар:</b> tmpfiles.org-та файл <b>24 сағаттан соң өшеді</b>. Сондықтан шақыртуды тойдан 1 күн бұрын жасаған дұрыс!</div>
 </div>
 
 <div class="c"><h2>1. Пакет</h2>
 <div class="pk">
-<label class="bronze"><input type="radio" name="pk" value="std" onchange="onPkg()"><b>🥉 ҚОЛА — Стандарт 3000 тг</b><ul><li>✅ Фото 1</li><li>✅ Мәлімет, карта, таймер</li><li class="no">❌ Конверт, Музыка, Видео, Дресс-код</li></ul></label>
-<label class="silver"><input type="radio" name="pk" value="prem" checked onchange="onPkg()"><b>🥈 КҮМІС — Премиум 5000 тг <span class="badge">ТАҢДАУЛЫ</span></b><ul><li>✅ 💌 Конверт + 🎵 Музыка + 🎥 Видео</li><li>✅ ✨ 3 дизайн + 🖼️ Галерея 3 фото + 👔 Дресс-код</li></ul></label>
-<label class="gold"><input type="radio" name="pk" value="vip" onchange="onPkg()"><b>🥇 АЛТЫН — VIP 10000 тг 👑</b><ul><li>✅ Барлығы + 👑 GOLD + 🖼️ 4 фото</li><li>✅ 📅 Календар + 👥 Қонақ саны</li></ul></label>
+<label class="bronze"><input type="radio" name="pk" value="std" onchange="onPkg()"><b>🥉 ҚОЛА — 3000 тг</b><ul><li>✅ Фото 1</li><li>✅ Мәлімет, карта, таймер</li><li class="no">❌ Конверт, Музыка, Видео, Дресс-код</li></ul></label>
+<label class="silver"><input type="radio" name="pk" value="prem" checked onchange="onPkg()"><b>🥈 КҮМІС — 5000 тг <span class="badge">ТАҢДАУЛЫ</span></b><ul><li>✅ 💌 Конверт + 🎵 Музыка + 🎥 Видео</li><li>✅ ✨ 3 дизайн + 🖼️ Галерея 3 фото + 👔 Дресс-код</li></ul></label>
+<label class="gold"><input type="radio" name="pk" value="vip" onchange="onPkg()"><b>🥇 АЛТЫН — 10000 тг 👑</b><ul><li>✅ Барлығы + 👑 GOLD + 🖼️ 4 фото</li><li>✅ 📅 Календар + 👥 Қонақ саны</li></ul></label>
 </div><p class="n" id="pkgInfo"></p></div>
 
 <div class="c"><h2>✨ Дизайн</h2>
@@ -142,9 +126,8 @@ button.dark{background:#1a1405}
 <label class="f">Тойхана</label><input type="text" id="place" value="Көкшетау, Думан тойханасы">
 <label class="f">Тілек</label><textarea id="wish">Құрметті қонақтар! Қуанышымызды бөлісіп, тойымыздың қадірлі қонағы болыңыздар!</textarea>
 <label class="f">WhatsApp - ТОЙ ИЕСІНІҢ нөмірі ⚠️</label><input type="tel" id="wa" placeholder="77012345678">
-<p class="n" style="color:#b4530f">⚠️ Осы нөмірге қонақтардың «Келемін» хаты барады. Міндетті түрде жазыңыз!</p>
 <div id="dressBlock"><label class="f">👔 Дресс-код</label><input type="text" id="dress" placeholder="Мысалы: Қара + алтын"></div>
-<div id="videoBlock"><label class="f">🎥 Видео - осында сілтемені қой 👇 (жоғарыдан жасап ал)</label><input type="text" id="video" placeholder="Жоғарыдан сілтеме жасап, осында қой"></div>
+<div id="videoBlock"><label class="f">🎥 Видео сілтемесі</label><input type="text" id="video" placeholder="tmpfiles-тан сілтеме жасап, осында қой"></div>
 </div>
 
 <div class="c" id="musicBlock"><h2>🎵 3. Қазақша әуен</h2>
@@ -155,42 +138,39 @@ button.dark{background:#1a1405}
 <label><input type="radio" name="music" value="kyzuzatu"> 💖 Қыз ұзату</label>
 <label><input type="radio" name="music" value="atameken"> 🇰🇿 Атамекен</label>
 </div>
-<label class="f">✅ Әннің сілтемесі - осында қой 👇 (жоғарыдан жасап ал)</label><input type="text" id="musicUrl" placeholder="Жоғарыдан сілтеме жасап, осында қой">
+<label class="f">✅ Әннің сілтемесі</label><input type="text" id="musicUrl" placeholder="tmpfiles-тан сілтеме жасап, осында қой">
 <p class="n" id="musicStatus">Ән таңдалмаған.</p>
 </div>
 
 <div class="c"><h2>📷 4. Фото <span id="photoLimit"></span></h2>
-<div class="tip">📷 Фотоны жоғарыдағы <b>«Сілтеме жасау орталығынан»</b> жасап, сілтемесін төменге қой. Сонда қонаққа 100% көрінеді.</div>
-<label class="f">✅ Фотоның сілтемесі - осында қой 👇 (жоғарыдан жасап ал)</label><input type="text" id="photoUrl" placeholder="Жоғарыдан сілтеме жасап, осында қой">
+<label class="f">✅ Фотоның сілтемесі</label><input type="text" id="photoUrl" placeholder="tmpfiles-тан сілтеме жасап, осында қой">
 <div class="th" id="th"></div><p class="n" id="photoStatus">Фото сілтемесі қойылмаған.</p>
 </div>
 
 <div class="c"><h2>5. Дайын</h2>
-<button onclick="makeInvite()" class="btn-red">👑 ШАҚЫРТУДЫ ЖАСАУ — КӨРУ 🔴</button>
+<button type="button" id="mainBtn" onclick="makeInvite()" class="btn-red">👑 ШАҚЫРТУДЫ ЖАСАУ — КӨРУ 🔴</button>
 <p class="n" id="debug" style="color:red"></p>
 <div id="act" style="display:none">
 <p class="n" id="note"></p>
-<button class="g" onclick="sendOrder()">📲 WhatsApp-қа жіберу</button>
+<button class="g" type="button" onclick="sendOrder()">📲 WhatsApp-қа жіберу</button>
 <div class="c" style="margin-top:12px"><b>💳 Төлем: <span id="amt"></span></b><br>Kaspi: +7 708 241 88 36<br>
-<button onclick="copyKaspi()">📋 Kaspi нөмірін көшіру</button>
-<button class="g" onclick="askCode()">✅ Төледім, код сұрау</button>
+<button type="button" onclick="copyKaspi()">📋 Kaspi нөмірін көшіру</button>
+<button class="g" type="button" onclick="askCode()">✅ Төледім, код сұрау</button>
 <div id="codeMsg" class="codeBox">
 <b>1-қадам:</b> Kaspi-ге <span id="amt2"></span> жіберіп, чекті сақтаңыз.<br>
-<b>2-қадам:</b> Төмендегі жасыл батырманы басып, маған чекті жіберіңіз. Мен бірден код жіберемін!<br>
-<button class="wa" onclick="sendCodeRequest()">📲 WhatsApp-қа код жіберші</button>
+<button class="wa" type="button" onclick="sendCodeRequest()">📲 WhatsApp-қа код жіберші</button>
 </div>
 </div>
-<div id="cd"><label class="f">Төлемнен кейін алған код (1 рет қана қолданылады)</label><input type="text" id="code" placeholder="Мысалы: 001-GY5N"><button onclick="checkCode()">🔓 Кодты енгізу</button><p class="n">Кодты енгізгенде «ҮЛГІ» жоғалып, жүктеп алу ашылады. Сол код екінші рет жұмыс істемейді.</p></div>
+<div id="cd"><label class="f">Төлемнен кейін алған код</label><input type="text" id="code" placeholder="Мысалы: 001-GY5N"><button type="button" onclick="checkCode()">🔓 Кодты енгізу</button></div>
 <div id="dw" style="display:none"><div class="ok">✅ Код қабылданды! «ҮЛГІ» алынды.</div>
-<button onclick="makeLink()" style="background:#1a7a3a;font-size:18px">🔗 ҚЫСҚА сілтеме алу</button>
-<button class="g" onclick="downloadInvite()">⬇️ Шақыртуды жүктеп алу (HTML)</button>
+<button type="button" onclick="makeLink()" style="background:#1a7a3a;font-size:18px">🔗 ҚЫСҚА сілтеме алу</button>
+<button class="g" type="button" onclick="downloadInvite()">⬇️ Шақыртуды жүктеп алу (HTML)</button>
 <div id="linkArea" class="linkCard">
 <b>🎉 Сілтемең дайын!</b><br>
-<span style="font-size:13px">Осы сілтемені басқан қонаққа шақырту бірден ашылады.</span>
 <div class="linkbox" id="linkText">Сілтеме осында шығады...</div>
-<button onclick="copyLink()" style="background:#1a7a3a">📋 Сілтемені көшіру</button>
-<button class="wa" onclick="shareLinkWA()">📲 WhatsApp-пен бөлісу</button>
-<button class="g" onclick="previewInvite()">👀 Шақыртуды алдын ала қарау</button>
+<button type="button" onclick="copyLink()" style="background:#1a7a3a">📋 Сілтемені көшіру</button>
+<button class="wa" type="button" onclick="shareLinkWA()">📲 WhatsApp-пен бөлісу</button>
+<button class="g" type="button" onclick="previewInvite()">👀 Шақыртуды алдын ала қарау</button>
 <p class="n" id="linkNote" style="text-align:center"></p>
 </div>
 </div>
@@ -202,5 +182,76 @@ button.dark{background:#1a1405}
 var SELLER="77082418836";
 var PRICE={std:3000,prem:5000,vip:10000};
 var MUSICS={toy:"https://cdn.pixabay.com/audio/2022/03/10/audio_2c8c7f7b2a.mp3",dombra:"https://cdn.pixabay.com/audio/2021/08/04/audio_2c8c7f7b2a.mp3",kyzuzatu:"https://cdn.pixabay.com/audio/2022/10/25/audio_2c8c7f7b2a.mp3",atameken:"https://cdn.pixabay.com/audio/2023/09/04/audio_2c8c7f7b2a.mp3"};
-var MUSIC_NAMES={toy:"Той жыры",dombra:"Домбыра күйі",kyzuzatu:"Қыз ұзату",atameken:"Атамекен"};
-var CODES=["001-GY5N","002-GCQV","003-KVFV","004-WTWG","005-47Y7","006-BVQD","007-7QNB","008-9TR9","009-4SLU","010-JJCU","011-GN58","012-6ZQU","013-GZE5","014-H3XA","015-2N53","016-V5GG","017-L78L","018-T482","019-7NBR","020-UVWE","021-89K9","022-RYD4","023-AVLX","024-SU8R","025-WPLX","026-2KZ7","027-SXZP","028-LME2","029-KAGL","030-J6QC","031-9ME9","032-Z5AJ","033-UT29","034-WPJU","035-5598","036-5ZQC","037-CYM7","038-UPGJ","039-BCR3","040-C4PM","041-VAF7","042-FMRD","043-S2L7","044-DYU8","045-ZKSQ","046-ZGLR","047-DXUZ","048-X6MU","049-8SYX","050-CRQD","051-QXSK","052-6ADK","053-7NJV","054-K26T","055-BQC2","056-WQZB","057-H38X","058-GUPU","059-UGLF","060-UPDH","061-MTVE","062-L7AC","063-MKZ5","064-BVC9","065
+var CODES=["001-GY5N","002-GCQV","003-KVFV","004-WTWG","005-47Y7","006-BVQD","007-7QNB","008-9TR9","009-4SLU","010-JJCU","011-GN58","012-6ZQU","013-GZE5","014-H3XA","015-2N53","016-V5GG","017-L78L","018-T482","019-7NBR","020-UVWE","021-89K9","022-RYD4","023-AVLX","024-SU8R","025-WPLX","026-2KZ7","027-SXZP","028-LME2","029-KAGL","030-J6QC"];
+var unlocked=false,lastLink="",lastData=null;
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function getPkg(){var e=document.querySelector('input[name=pk]:checked');return e?e.value:"prem"}
+function getDesign(){var e=document.querySelector('input[name=design]:checked');return e?e.value:"gold"}
+function getMusic(){var e=document.querySelector('input[name=music]:checked');return e?e.value:""}
+function cleanWa(raw){var c=(raw||"").replace(/\D/g,"");if(c.indexOf("8")==0&&c.length==11)c="7"+c.slice(1);if(c.length==10)c="7"+c;return c}
+function pkgFeatures(p){
+  if(p==="std") return {envelope:false,music:false,video:false,dress:false,calendar:false,rsvp:false,maxPhoto:1,tag:"🥉 ҚОЛА"};
+  if(p==="vip") return {envelope:true,music:true,video:true,dress:true,calendar:true,rsvp:true,maxPhoto:4,tag:"🥇 АЛТЫН VIP"};
+  return {envelope:true,music:true,video:true,dress:true,calendar:false,rsvp:false,maxPhoto:3,tag:"🥈 КҮМІС"};
+}
+function onPkg(){try{var p=getPkg(),f=pkgFeatures(p);$("musicBlock").style.display=f.music?"block":"none";$("dressBlock").style.display=f.dress?"block":"none";$("videoBlock").style.display=f.video?"block":"none";$("photoLimit").textContent="(максимум "+f.maxPhoto+")";$("pkgInfo").innerHTML="Қазір: <b>"+f.tag+"</b>";}catch(e){}}
+function applyPaste(kind){
+  try{
+    var link=(document.getElementById(kind==="photo"?"pastePhoto":kind==="music"?"pasteMusic":"pasteVideo").value||"").trim();
+    if(!link||link.indexOf("http")!==0){alert("Алдымен tmpfiles.org-тан көшіріп алған сілтемені қойыңыз!");return}
+    if(kind==="photo"){var cur=$("photoUrl").value.trim();$("photoUrl").value=cur?cur+" "+link:link;$("th").innerHTML='<img src="'+link+'">';$("photoStatus").textContent="✅ Фото сілтемесі қойылды!";$("stPhoto").textContent="✅ Дайын!";}
+    if(kind==="music"){$("musicUrl").value=link;$("musicStatus").textContent="✅ Ән сілтемесі қойылды!";$("stMusic").textContent="✅ Дайын!";}
+    if(kind==="video"){$("video").value=link;$("stVideo").textContent="✅ Дайын!";}
+    alert("✅ Сілтеме қойылды!");
+  }catch(e){alert("Қате: "+e.message)}
+}
+function collect(){var urls=($("photoUrl").value||"").split(/[\s,]+/).filter(function(u){return u.indexOf("http")==0});return {pkg:getPkg(),design:getDesign(),name:$("name").value.trim(),kind:$("kind").value,date:$("date").value,time:$("time").value,place:$("place").value.trim(),wish:$("wish").value.trim(),wa:cleanWa($("wa").value),dress:$("dress").value.trim(),video:$("video").value.trim(),music:getMusic(),musicUrl:$("musicUrl").value.trim(),photos:urls}}
+function build(d,showWatermark){
+  var f=pkgFeatures(d.pkg||"prem");var designUse=d.pkg==="std"?"gold":(d.design||"gold");
+  var musicUrl=f.music?(d.musicUrl||MUSICS[d.music]||""):"";var hasMusic=f.music&&!!musicUrl;
+  var hasVideo=f.video&&!!d.video,hasDress=f.dress&&!!d.dress,hasCal=f.calendar&&!!d.date,hasRsvp=f.rsvp;
+  var allPhotos=(d.photos||[]).slice(0,f.maxPhoto);var ds=d.date?new Date(d.date+"T00:00:00").toLocaleDateString("kk-KZ",{day:"numeric",month:"long",year:"numeric"}):"";var maps="https://maps.google.com/?q="+encodeURIComponent(d.place||"");
+  var ownerWa=cleanWa(d.wa);if(!ownerWa||ownerWa.length<11) ownerWa=SELLER;
+  var waYes="https://wa.me/"+ownerWa+"?text="+encodeURIComponent("Сәлеметсіз бе! "+(d.name||"Той")+" тойына КЕЛЕМІН ✅ Аты-жөнім: ");
+  var wa2="https://wa.me/"+ownerWa+"?text="+encodeURIComponent("Сәлеметсіз бе! "+(d.name||"Той")+" тойына 2 адаммен келемін ✅ ");
+  var waNo="https://wa.me/"+ownerWa+"?text="+encodeURIComponent("Сәлеметсіз бе! "+(d.name||"Той")+" тойына келе алмаймын ");
+  var calUrl="";if(hasCal){var s=(d.date||"").replace(/-/g,"")+"T"+(d.time||"18:00").replace(":","")+"00";calUrl="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(d.name)+"&dates="+s+"/"+(d.date||"").replace(/-/g,"")+"T220000&location="+encodeURIComponent(d.place||"")}
+  var th={gold:{bg:"linear-gradient(180deg,#2b1d05,#171106)",card:"#fffdf7",ac:"#c9a227",ac2:"#f5d76e",btnTx:"#1a1405",grad:"linear-gradient(135deg,#f5d76e,#c9a227,#a67c00)",envBg:"linear-gradient(180deg,#ffd6e0,#fff0f3)",envTx:"#5a2330"},rose:{bg:"linear-gradient(180deg,#ffd6e0,#fff0f3)",card:"#ffffff",ac:"#d6336c",ac2:"#ff8fab",btnTx:"#ffffff",grad:"linear-gradient(135deg,#ff8fab,#d6336c,#a61e4d)",envBg:"linear-gradient(180deg,#ffd6e0,#fff0f3)",envTx:"#5a2330"},emerald:{bg:"linear-gradient(180deg,#0f2e22,#0a1f17)",card:"#fffdf7",ac:"#1a7a4d",ac2:"#d4af37",btnTx:"#ffffff",grad:"linear-gradient(135deg,#2ea36b,#0f5a35)",envBg:"linear-gradient(180deg,#d4f5e0,#fff0f3)",envTx:"#123324"}}[designUse];
+  var photoHtml=allPhotos.length?'<div style="padding:7px;background:'+th.grad+';border-radius:20px;margin:12px 0"><img src="'+esc(allPhotos[0])+'" style="width:100%;display:block;border-radius:14px;aspect-ratio:4/3;object-fit:cover" onerror="this.parentElement.style.display=\'none\'"></div>':'<div style="background:#fff0f3;border:2px dashed #ff8fab;border-radius:16px;padding:18px;margin:12px 0;font-size:14px;color:#888">🖼️ Фото жоқ<br><span style="font-size:12px">tmpfiles.org-тан сілтеме жасап қойыңыз</span></div>';
+  var other=f.maxPhoto>1?allPhotos.slice(1).map(function(u){return '<img src="'+esc(u)+'" style="width:100%;border-radius:14px;margin:6px 0" onerror="this.style.display=\'none\'">'}).join(""):"";
+  var btn='display:block;padding:14px;border-radius:14px;background:#fff;border:2px solid #b4530f;color:#b4530f;text-decoration:none;margin:10px 0;font-family:system-ui,sans-serif;font-weight:700';
+  var musicHtml=hasMusic?'<audio id="mus" loop><source src="'+esc(musicUrl)+'"></audio><button id="bellBtn" onclick="var a=document.getElementById(\'mus\');var b=document.getElementById(\'bellBtn\');if(a.paused){a.play();b.textContent=\'🔕\';b.style.background=\'#ff0000\'}else{a.pause();b.textContent=\'🔔\';b.style.background=\'#fff\'}" style="position:fixed;top:12px;right:12px;z-index:100;width:48px;height:48px;border-radius:50%;border:2px solid #ffd700;background:#fff;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.35);padding:0">🔔</button>':"";
+  var videoHtml=hasVideo?'<a style="'+btn+'" target="_blank" href="'+esc(d.video)+'">▶️ Видеоны көру</a>':"";
+  var dressHtml=hasDress&&d.dress?'<div style="background:#fff0f3;border:1px solid #e6c84a;border-radius:12px;padding:10px;margin:12px 0;font-family:system-ui,sans-serif;font-size:14px">👔 <b>Дресс-код:</b> '+esc(d.dress)+'</div>':"";
+  var calHtml=hasCal?'<a style="'+btn+'" target="_blank" href="'+esc(calUrl)+'">📅 Календарға қосу</a>':"";
+  var rb='flex:1;background:#fff;border:1px solid #bcd3ff;border-radius:10px;padding:10px 4px;text-decoration:none;color:#1a3a6a;font-size:13px;font-weight:600;text-align:center';
+  var rsvpHtml=hasRsvp?'<div style="background:#f0f7ff;border:1px solid #bcd3ff;border-radius:14px;padding:12px;margin:12px 0;font-family:system-ui,sans-serif"><b>👥 Сіз неше адаммен келесіз?</b><div style="display:flex;gap:6px;margin-top:8px"><a style="'+rb+'" target="_blank" href="'+esc(wa2)+'">2 адам</a><a style="'+rb+'" target="_blank" href="'+esc(waYes)+'">1 адам</a><a style="'+rb+'" target="_blank" href="'+esc(waNo)+'">Келе алмаймын</a></div></div>':"";
+  var target=d.date?d.date+"T"+(d.time||"00:00")+":00":"";
+  var watermark=showWatermark?'<div style="position:fixed;top:10px;left:10px;z-index:99;background:#ff0000;color:#fff;font:800 13px system-ui,sans-serif;padding:6px 12px;border-radius:20px">ҮЛГІ</div>':'';
+  var css='body{margin:0;background:'+th.bg+';font:17px/1.6 Georgia,serif;text-align:center}.w{max-width:480px;margin:0 auto;padding:20px 14px}.card{background:'+th.card+';border-radius:26px;padding:26px 18px;border:2px solid '+th.ac2+';color:#2b1d05}.t{display:flex;gap:8px;justify-content:center;margin:14px 0}.t div{flex:1;padding:10px 4px;border-radius:14px;background:#fff;border:1px solid '+th.ac2+'}.t b{display:block;font-size:24px;color:'+th.ac+'}.t span{font-size:11px;color:#888}.b{display:block;padding:14px;border-radius:14px;background:'+th.grad+';color:'+th.btnTx+';text-decoration:none;margin:10px 0;font-family:system-ui,sans-serif;font-weight:700}.b.o{background:#fff;border:2px solid '+th.ac+';color:'+th.ac+'}#e{position:fixed;inset:0;background:'+th.envBg+';z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;color:'+th.envTx+';padding:20px}#e.x{display:none}#e button{border:0;padding:16px 40px;border-radius:100px;background:'+th.grad+';color:'+th.btnTx+';font-weight:700;font-size:18px;cursor:pointer}';
+  var env=f.envelope?'<div id="e"><div style="font-size:70px">🕊️</div><div style="font-size:14px">АҚ КӨГЕРШІН СІЗГЕ ХАТ ӘКЕЛДІ</div><div style="font-size:90px">💌</div><div>💖 💗 💓 💖 💗</div><h2 style="font-size:26px">Сізге шақырту келді</h2><div style="color:'+th.ac+';font-size:21px;font-weight:700">'+esc(d.name)+' • '+esc(d.kind)+'</div><button onclick="document.getElementById(\'e\').className=\'x\'">✉️ Ашу</button></div>':'';
+  var timer=target?'<div class="t"><div><b id="dd">--</b><span>күн</span></div><div><b id="hh">--</b><span>сағат</span></div><div><b id="mm">--</b><span>мин</span></div><div><b id="ss">--</b><span>сек</span></div></div><script>var T=new Date("'+target+'").getTime();setInterval(function(){var s=Math.max(0,Math.floor((T-Date.now())/1000));document.getElementById("dd").textContent=Math.floor(s/86400);document.getElementById("hh").textContent=Math.floor(s%86400/3600);document.getElementById("mm").textContent=Math.floor(s%3600/60);document.getElementById("ss").textContent=s%60},1000);<\/script>':"";
+  return '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.name)+'</title><style>'+css+'</style></head><body>'+watermark+musicHtml+env+'<div class="w"><div class="card"><div style="font-size:28px">🕊️ 💖</div><p style="color:#888">'+esc(d.kind)+'</p><h1 style="font-size:32px">'+esc(d.name)+'</h1>'+photoHtml+other+'<p style="font-size:20px;font-weight:700;color:'+th.ac+'">'+esc(ds)+' • '+(d.time||"")+'</p><p>'+esc(d.place)+'</p><p>'+esc(d.wish)+'</p>'+timer+videoHtml+dressHtml+calHtml+rsvpHtml+'<a class="b" target="_blank" href="'+esc(maps)+'">📍 Картадан қарау</a><a class="b o" target="_blank" href="'+esc(waYes)+'">✅ Келемін - Той иесіне жазу</a></div></div></body></html>';
+}
+function openViewer(html,guest){try{var v=$("viewer");v.classList.toggle("guest",!!guest);v.classList.add("show");var f=$("viewerFrame");var blob=new Blob([html],{type:"text/html"});f.src=URL.createObjectURL(blob);}catch(e){var w=window.open("","_blank");if(w)w.document.write(html);}}
+function closeViewer(){ $("viewer").classList.remove("show"); }
+function goToPay(){ closeViewer(); $("act").style.display="block"; document.getElementById("mainForm").scrollIntoView(); }
+function makeInvite(){alert("✅ Батырма істеді! Шақырту ашылып жатыр...");try{var d=collect();lastData=d;var html=build(d,!unlocked);openViewer(html,false);$("act").style.display="block";$("amt").textContent=PRICE[d.pkg]+" тг";$("amt2").textContent=PRICE[d.pkg]+" тг";$("note").textContent="Шақырту дайын!";$("debug").textContent="";}catch(e){$("debug").textContent="Қате: "+e.message;alert("Қате: "+e.message)}}
+function sendOrder(){var d=lastData||collect();window.open("https://wa.me/"+SELLER+"?text="+encodeURIComponent("Тойға шақырту! "+d.name+" - "+d.kind+" "+d.date+" "+d.place+" Пакет: "+d.pkg+" Баға: "+PRICE[d.pkg]+" тг"),"_blank")}
+function copyKaspi(){try{navigator.clipboard.writeText("+77082418836");alert("Kaspi нөмірі көшірілді!")}catch(e){prompt("Көшіріп ал:","+77082418836")}}
+function askCode(){$("codeMsg").style.display="block";var d=lastData||collect();$("amt2").textContent=PRICE[d.pkg]+" тг"}
+function sendCodeRequest(){var d=lastData||collect();window.open("https://wa.me/"+SELLER+"?text="+encodeURIComponent("Сәлем! Төледім ✅ Аты: "+d.name+" Той: "+d.kind+" "+d.date+" Пакет: "+d.pkg+" - "+PRICE[d.pkg]+" тг Чекті жібердім, маған КОД жіберші"),"_blank")}
+function getUsed(){try{return JSON.parse(localStorage.getItem("usedCodes")||"[]")}catch(e){return[]}}
+function checkCode(){var v=($("code").value||"").trim().toUpperCase();if(CODES.indexOf(v)==-1){alert("❌ Код қате");return}if(getUsed().indexOf(v)>-1){alert("❌ Бұл код бұрын қолданылған!");return}try{var u=getUsed();u.push(v);localStorage.setItem("usedCodes",JSON.stringify(u));}catch(e){}unlocked=true;$("dw").style.display="block";$("cd").style.display="none";alert("✅ Код қабылданды!")}
+function copyUsed(){var u=getUsed();try{navigator.clipboard.writeText(u.join("\n"));alert("Көшірілді!")}catch(e){prompt("Көшіріп ал:",u.join("\n"))}}
+function previewInvite(){var d=lastData||collect();openViewer(build(d,false),true)}
+function makeLink(){var d=lastData||collect();try{var clean={pkg:d.pkg,design:d.design,name:d.name,kind:d.kind,date:d.date,time:d.time,place:d.place,wish:d.wish,wa:d.wa,dress:d.dress,video:d.video,music:d.music,musicUrl:d.musicUrl,photos:d.photos};var code=btoa(unescape(encodeURIComponent(JSON.stringify(clean))));var base=location.href.split("#")[0].split("?")[0];lastLink=base+"#i="+code;}catch(e){lastLink=location.href}var area=$("linkArea");area.style.display="block";$("linkText").textContent=lastLink;$("linkNote").textContent="✅ Сілтеме дайын!";area.scrollIntoView({behavior:"smooth",block:"center"});alert("✅ Сілтеме дайын!");}
+function copyLink(){if(!lastLink){alert("Алдымен сілтеме алу бас");return}try{navigator.clipboard.writeText(lastLink).then(function(){alert("✅ Сілтеме көшірілді!")})}catch(e){prompt("Көшіріп ал:",lastLink)}}
+function shareLinkWA(){if(!lastLink){alert("Алдымен сілтеме алу бас");return}var d=lastData||collect();window.open("https://wa.me/?text="+encodeURIComponent("💌 Сізге шақырту келді! "+d.name+" • "+d.kind+" 📅 "+d.date+" "+d.time+" 📍 "+d.place+" 👇 "+lastLink),"_blank")}
+function downloadInvite(){var d=lastData||collect();var html=build(d,false);var blob=new Blob([html],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="shaqyrtu.html";a.click();alert("✅ Файл жүктелді!")}
+function checkGuestLink(){var h=location.hash||"";if(h.indexOf("#i=")==0){try{var data=JSON.parse(decodeURIComponent(escape(atob(h.substring(3)))));openViewer(build(data,false),true);$("mainForm").style.display="none"}catch(e){}}}
+try{onPkg();checkGuestLink();}catch(e){}
+</script>
+</body>
+</html>
