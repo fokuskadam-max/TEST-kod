@@ -1,188 +1,31 @@
-<!DOCTYPE html>
-<html lang="kk">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Той шақыртуы – онлайн жасау</title>
-<style>
-:root{box-sizing:border-box;--bg:#faf6ef;--card:#fff;--tx:#2a2118;--mut:#7a6a58;--ac:#b4530f;--bd:#e6dccb;--on:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#17130e;--card:#221c14;--tx:#f3eadb;--mut:#b5a58f;--ac:#e8923f;--bd:#3a3125;--on:#1a1208}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.w{max-width:560px;margin:0 auto;padding:16px}
-h1{font-size:24px;margin:8px 0 4px}
-p.s{color:var(--mut);margin:0 0 16px}
-.c{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:14px}
-h2{font-size:16px;margin:0 0 10px}
-.pk{display:grid;gap:8px}
-.pk label{display:block;border:2px solid var(--bd);border-radius:12px;padding:10px 12px;cursor:pointer}
-.pk input{display:none}
-.pk label:has(input:checked){border-color:var(--ac)}
-.pk b{display:block}.pk small{color:var(--mut)}
-label.f{display:block;font-size:14px;color:var(--mut);margin:10px 0 4px}
-input[type=text],input[type=date],input[type=time],input[type=tel],select,textarea{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
-textarea{min-height:80px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-button{font:inherit;border:0;border-radius:12px;padding:13px 16px;background:var(--ac);color:var(--on);font-weight:600;width:100%;cursor:pointer;margin-top:8px}
-button.g{background:transparent;color:var(--ac);border:2px solid var(--ac)}
-.th{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.th img{width:64px;height:64px;object-fit:cover;border-radius:8px}
-iframe{width:100%;height:560px;border:1px solid var(--bd);border-radius:14px;background:#fff}
-.n{font-size:13px;color:var(--mut);margin-top:6px}
-</style>
-</head>
-<body>
-<div class="w">
-<h1>🎉 Той шақыртуын өзіңіз жасаңыз</h1>
-<p class="s">Форманы толтырыңыз, шақырту бірден дайын болады.</p>
+// Made with ♥ by Ducky
+// https://christieman.com/
 
-<div class="c"><h2>1. Пакетті таңдаңыз</h2>
-<div class="pk">
-<label><input type="radio" name="pk" value="std"><div><b>Стандарт — 3000 тг</b><small>Фото, мәлімет, карта, таймер, WhatsApp батырмасы</small></div></label>
-<label><input type="radio" name="pk" value="prem" checked><div><b>Премиум — 5000 тг</b><small>Стандарт + ашылатын конверт + видео сілтеме</small></div></label>
-<label><input type="radio" name="pk" value="vip"><div><b>VIP Luxury — 10000 тг</b><small>GOLD дизайн + конверт + видео + жеке сілтеме</small></div></label>
-</div></div>
+// - I noticed buggy scaling on mouseout for firefox, if you know why I'd love to hear it!
 
-<div class="c"><h2>2. Той мәліметі</h2>
-<label class="f">Той иесінің аты</label><input type="text" id="name" placeholder="Алихан, 3 жас">
-<label class="f">Қандай той</label>
-<select id="kind"><option>Сүндет той</option><option>Қыз ұзату</option><option>Үйлену тойы</option><option>Тұсау кесер</option><option>Мерейтой</option><option>Бесік той</option></select>
-<div class="row"><div><label class="f">Күні</label><input type="date" id="date"></div><div><label class="f">Сағаты</label><input type="time" id="time" value="18:00"></div></div>
-<label class="f">Тойхана аты, мекенжайы</label><input type="text" id="place" placeholder="Астана, Думан тойханасы">
-<label class="f">Тілек / шақыру сөзі</label><textarea id="wish" placeholder="Құрметті қонақтар! Балаларымыздың тойына шақырамыз..."></textarea>
-<label class="f">Видео сілтемесі (Премиум, VIP)</label><input type="text" id="video" placeholder="https://youtube.com/...">
-<label class="f">Сіздің WhatsApp нөміріңіз (қонақтар жауап беру үшін)</label><input type="tel" id="wa" placeholder="77012345678">
-</div>
+// Degree of Rotation (try .2, .2) or higher for some fun
+const xRatio = 0.1;
+const yRatio = 0.15;
 
-<div class="c"><h2>3. Фото (4-ке дейін)</h2>
-<input type="file" id="ph" accept="image/*" multiple>
-<div class="th" id="th"></div></div>
+const posters = document.querySelectorAll('.poster');
 
-<div class="c"><h2>4. Шақырту</h2>
-<button id="go">Шақыртуды жасау</button>
-<iframe id="pv" title="Шақырту" style="display:none;margin-top:12px"></iframe>
-<div id="act" style="display:none">
-<button class="g" id="ord">📲 Тапсырысты WhatsApp-қа жіберу</button>
-<div class="c" id="pay" style="margin-top:12px"><b>💳 Төлем</b><p class="n" id="amt"></p><button id="cp">📋 Kaspi нөмірін көшіру</button><button class="g" id="paid">✅ Төледім, код сұрау</button></div>
-<div id="cd"><label class="f">Төлемнен кейін алған код</label><input type="text" id="code" placeholder="Кодты осында жазыңыз"><button id="ck">🔓 Кодты енгізу</button></div>
-<div id="dw" style="display:none">
-<button id="dl">⬇️ Шақыртуды жүктеп алу</button>
-<button class="g" id="op">👁 Браузерде ашу</button>
-<p class="n">Жүктелген файл ашылмаса: Chrome → ⋮ → Жүктеулер ішінен басыңыз. Ол да ашылмаса, файлды сатушыға жіберіңіз, сілтеме жасап береді.</p>
-</div>
-<p class="n" id="note"></p></div>
-</div>
-</div>
+const onHover = (poster, shine, { offsetX, offsetY }) => {
+	const width = poster.clientWidth;
+	const height = poster.clientHeight;
+	const dx = offsetX - (width / 2);
+	const dy = offsetY - (height / 2);
+	
+	shine.style.transform = `translate(${dx}px, ${dy}px)`;
+	poster.style.transform = `rotateY(${-dx * yRatio}deg) rotateX(${dy * xRatio}deg)`;
+};
 
-<script>
-var SELLER="77082418836";
-var CODES=["001-GY5N","002-GCQV","003-KVFV","004-WTWG","005-47Y7","006-BVQD","007-7QNB","008-9TR9","009-4SLU","010-JJCU","011-GN58","012-6ZQU","013-GZE5","014-H3XA","015-2N53","016-V5GG","017-L78L","018-T482","019-7NBR","020-UVWE","021-89K9","022-RYD4","023-AVLX","024-SU8R","025-WPLX","026-2KZ7","027-SXZP","028-LME2","029-KAGL","030-J6QC","031-9ME9","032-Z5AJ","033-UT29","034-WPJU","035-5598","036-5ZQC","037-CYM7","038-UPGJ","039-BCR3","040-C4PM","041-VAF7","042-FMRD","043-S2L7","044-DYU8","045-ZKSQ","046-ZGLR","047-DXUZ","048-X6MU","049-8SYX","050-CRQD","051-QXSK","052-6ADK","053-7NJV","054-K26T","055-BQC2","056-WQZB","057-H38X","058-GUPU","059-UGLF","060-UPDH","061-MTVE","062-L7AC","063-MKZ5","064-BVC9","065-2TJ9","066-H3CR","067-JCFD","068-ZP7Z","069-TFCV","070-LWRG","071-6V4P","072-DA69","073-3WY9","074-B3BM","075-27W9","076-ZDZF","077-ZM58","078-VYU5","079-CY4T","080-N4Z7","081-F2JS","082-TW6A","083-6WBY","084-UGFW","085-36ZK","086-ER97","087-9X5R","088-YXUX","089-UNKR","090-DG8L","091-2PRX","092-D49H","093-AY5X","094-FHYD","095-UAJQ","096-SD9A","097-29Z5","098-W3XJ","099-S5MM","100-RACY"],unlocked=false;
-var PRICE={std:3000,prem:5000,vip:10000};
-var $=function(i){return document.getElementById(i)};
-var photos=[],lastHtml="";
-function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function pkg(){return document.querySelector('input[name=pk]:checked').value}
+const reset = (poster) => {
+	poster.style.transform = ``;
+};
 
-$("ph").addEventListener("change",function(e){
-  photos=[];$("th").innerHTML="";
-  Array.prototype.slice.call(e.target.files,0,4).forEach(function(f){
-    var r=new FileReader();
-    r.onload=function(){var im=new Image();im.onload=function(){
-      var m=800,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement("canvas");
-      c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);
-      var u=c.toDataURL("image/jpeg",0.78);photos.push(u);
-      var t=new Image();t.src=u;$("th").appendChild(t);
-    };im.src=r.result};r.readAsDataURL(f);
-  });
+posters.forEach(poster => {
+	const image = poster.querySelector('.poster__image');
+	const shine = poster.querySelector('.poster__shine');
+	image.addEventListener('mousemove', e => onHover(image, shine, e));
+	image.addEventListener('mouseout', () => reset(image));
 });
-
-function build(d){
-  var p=d.pkg,vip=p==="vip",env=p!=="std";
-  var bg=vip?"#14110a":p==="prem"?"#f5f3ff":"#fff7ee";
-  var tx=vip?"#f5e6b3":"#2a2118";
-  var ac=vip?"#d4af37":p==="prem"?"#6d28d9":"#c2410c";
-  var ds=d.date?new Date(d.date+"T00:00:00").toLocaleDateString("kk-KZ",{day:"numeric",month:"long",year:"numeric"}):"";
-  var maps="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(d.place);
-  var wa="https://wa.me/"+d.wa.replace(/\D/g,"")+"?text="+encodeURIComponent("Сәлеметсіз бе! Тойға келемін ✅");
-  var gal=d.photos.length;
-  var vid=(env&&d.video)?'<a class="b o" href="'+esc(d.video)+'">▶️ Видеоны көру</a>':"";
-  var target=d.date?d.date+"T"+(d.time||"00:00")+":00":"";
-  return '<!DOCTYPE html><html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.name)+' – '+esc(d.kind)+'</title><style>'
-  +'*{box-sizing:border-box}body{margin:0;background:'+bg+';color:'+tx+';font:17px/1.55 Georgia,serif;text-align:center}'
-  +'.w{max-width:480px;margin:0 auto;padding:28px 18px}.k{letter-spacing:3px;text-transform:uppercase;font-size:13px;color:'+ac+'}'
-  +'h1{font-size:36px;margin:8px 0 14px;color:'+ac+'}img{width:100%;border-radius:16px;margin:8px 0;'+(vip?'border:2px solid '+ac:'')+'}'
-  +'.q{margin:18px 0;font-style:italic;white-space:pre-line}.i{border:1px solid '+ac+';border-radius:14px;padding:14px;margin:16px 0}'
-  +'.t{display:flex;gap:8px;justify-content:center;margin:12px 0}.t div{min-width:64px;padding:8px;border-radius:12px;background:'+ac+';color:'+(vip?'#14110a':'#fff')+'}.t b{display:block;font-size:24px}.t span{font-size:11px}'
-  +'.b{display:block;padding:14px;border-radius:12px;background:'+ac+';color:'+(vip?'#14110a':'#fff')+';text-decoration:none;margin:10px 0;font-family:system-ui,sans-serif;font-weight:600}.b.o{background:transparent;border:2px solid '+ac+';color:'+ac+'}'
-  +'#e{position:fixed;inset:0;background:'+bg+';z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .9s,opacity .9s}#e.x{transform:translateY(-100%);opacity:0;pointer-events:none;visibility:hidden}#e .m{font-size:80px}#e button{margin-top:16px;border:0;padding:14px 28px;border-radius:30px;background:'+ac+';color:'+(vip?'#14110a':'#fff')+';font:600 17px system-ui}'
-  +'.wm{position:fixed;inset:0;z-index:99;pointer-events:none;display:flex;align-items:center;justify-content:center;font:700 34px system-ui;color:rgba(128,128,128,.35);transform:rotate(-25deg);text-align:center}</style></head><body>'
-  +(unlocked?'':'<div class="wm">ҮЛГІ<br>төленбеген</div>')
-  +(env?'<div id="e"><div class="m">💌</div><p>Сізге шақырту келді</p><button onclick="document.getElementById(\'e\').className=\'x\'">Ашу</button></div>':'')
-  +'<div class="w"><div class="k">'+esc(d.kind)+'</div><h1>'+esc(d.name)+'</h1>'+(gal?'<img src="'+d.photos[0]+'" alt="">':"")
-  +(d.wish?'<div class="q">'+esc(d.wish)+'</div>':'')
-  +(target?'<div class="t" id="t"></div>':'')
-  +'<div class="i"><div>📅 '+esc(ds)+(d.time?', '+esc(d.time):'')+'</div><div>📍 '+esc(d.place)+'</div></div>'
-  +'<a class="b" href="'+maps+'">🗺 Картадан көру</a>'+vid
-  +(d.wa?'<a class="b o" href="'+wa+'">✅ Келемін деп жауап беру</a>':'')
-  +d.photos.slice(1).map(function(u){return '<img src="'+u+'" alt="">'}).join("")
-  +'</div>'
-  +(target?'<script>var T=new Date("'+target+'").getTime();function u(){var s=Math.max(0,Math.floor((T-Date.now())/1000)),a=[["күн",86400],["сағат",3600],["мин",60],["сек",1]],h="";a.forEach(function(x){var v=Math.floor(s/x[1]);s-=v*x[1];h+="<div><b>"+v+"</b><span>"+x[0]+"</span></div>"});document.getElementById("t").innerHTML=h}u();setInterval(u,1000);<\/script>':'')
-  +'</body></html>';
-}
-
-function data(){return{pkg:pkg(),name:$("name").value.trim()||"Той иесі",kind:$("kind").value,date:$("date").value,time:$("time").value,place:$("place").value.trim()||"Мекенжай көрсетілмеген",wish:$("wish").value.trim(),video:$("video").value.trim(),wa:$("wa").value.trim(),photos:photos}}
-
-$("go").addEventListener("click",function(){
-  unlocked=false;$("dw").style.display="none";$("cd").style.display="block";$("pay").style.display="block";
-  lastHtml=build(data());
-  var f=$("pv");f.style.display="block";f.srcdoc=lastHtml;
-  $("act").style.display="block";f.scrollIntoView({behavior:"smooth"});
-  $("amt").textContent="Төлем сомасы: "+PRICE[pkg()]+" тг. Kaspi: +7 708 241 88 36";
-  $("note").textContent="Бұл үлгі. Ұнаса, төлем жасап, кодты сұраңыз, сосын кодты енгізіп жүктеп алыңыз.";
-});
-
-$("cp").addEventListener("click",function(){
-  try{navigator.clipboard.writeText("+77082418836");$("note").textContent="Нөмір көшірілді ✅ Kaspi-ге өтіп төлеңіз."}
-  catch(e){$("note").textContent="Нөмір: +7 708 241 88 36"}
-});
-
-$("paid").addEventListener("click",function(){
-  var d=data(),P=PRICE[d.pkg];
-  var t="Сәлеметсіз бе! Төлем жасадым ("+P+" тг). Код беріңіз.\nТой: "+d.kind+"\nАты: "+d.name+"\nКүні: "+d.date+" "+d.time;
-  window.open("https://wa.me/"+SELLER+"?text="+encodeURIComponent(t),"_blank");
-});
-
-$("ck").addEventListener("click",function(){
-  var v=$("code").value.trim().toUpperCase();
-  if(CODES.indexOf(v)<0){$("note").textContent="Код қате. Төлем жасап, кодты сатушыдан алыңыз.";return}
-  var used=[];try{used=JSON.parse(localStorage.getItem("usedCodes")||"[]")}catch(e){}
-  if(used.indexOf(v)>=0){$("note").textContent="Бұл код бұрын қолданылған. Жаңа шақыру үшін жаңа код керек.";return}
-  used.push(v);try{localStorage.setItem("usedCodes",JSON.stringify(used))}catch(e){}
-  unlocked=true;lastHtml=build(data());$("pv").srcdoc=lastHtml;
-  $("cd").style.display="none";$("pay").style.display="none";$("dw").style.display="block";
-  $("note").textContent="Код қабылданды ✅ Бірден жүктеп алыңыз.";
-});
-
-function blobUrl(){return URL.createObjectURL(new Blob([lastHtml],{type:"text/html;charset=utf-8"}))}
-
-$("dl").addEventListener("click",function(){
-  if(!unlocked)return;
-  var a=document.createElement("a");
-  a.href=blobUrl();a.download="shakyrtu.html";
-  document.body.appendChild(a);a.click();a.remove();
-});
-
-$("op").addEventListener("click",function(){
-  if(!unlocked)return;
-  var w=window.open(blobUrl(),"_blank");
-  if(!w){$("note").textContent="Браузер жаңа бетті бұғаттады. Рұқсат беріп, қайта басыңыз."}
-});
-
-$("ord").addEventListener("click",function(){
-  var d=data(),n={std:"Стандарт 3000тг",prem:"Премиум 5000тг",vip:"VIP 10000тг"}[d.pkg];
-  var t="Сәлеметсіз бе! Шақырту тапсырысы:\nПакет: "+n+"\nТой: "+d.kind+"\nАты: "+d.name+"\nКүні: "+d.date+" "+d.time+"\nЖері: "+d.place+"\nТілек: "+d.wish+"\n(Фотоларды жеке жіберемін)";
-  window.open("https://wa.me/"+SELLER+"?text="+encodeURIComponent(t),"_blank");
-});
-</script>
-</body>
-</html>
