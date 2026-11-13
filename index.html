@@ -1,81 +1,34 @@
-	}
-	
-	&__shine {
-		position: absolute;
-		top: 25%;
-		left: 5%;
-		width: 90%;
-		padding-top: 90%;
-		background: rgba(255, 255, 255, 0.3);
-		filter: blur(25px);
-		pointer-events: none;
-		border-radius: 50%;
-		opacity: 0;
-		transition: opacity 300ms;
-	}
-	
-	&__title {
-		position: relative;
-		top: -20px;
-		font-size: 20px;
-		opacity: 0;
-		text-align: center;
-		z-index: 1;
-		transition: top 300ms, opacity 200ms;
-	}
-}- var movies = []
-- movies.push({ title: `Adventure Time`, background: `https://i.imgur.com/M468PRI.jpeg` })
-- movies.push({ title: `Bob's Burgers`, background: `https://i.imgur.com/bRK3CB2.jpeg` })
-- movies.push({ title: `The Office`, background: `https://i.imgur.com/yXJCIY1.jpeg` })
-- movies.push({ title: `Parks and Recreation`, background: `https://i.imgur.com/DBXlssR.jpeg` })
-- movies.push({ title: `Rick and Morty`, background: `https://i.imgur.com/6w0lPGQ.jpeg` })
+      time.textContent = '00:00';
+    });
 
-div(class='background-container')
-div(class='content')
-	div(class='title') 
-		| Apple TV Experience 
-		em Hint: Hover
-	div(class='grid')
-		each movie in movies
-			div(class=`poster`)
-					div(class='poster__image-container')
-						div(class=`poster__image-perspective`)
-							div(class='poster__image', style=`background-image: url('${movie.background}');`)
-								div(class='poster__shine')
-					div(class='poster__title')= movie.title
-	div(class='footer') 
-		| Made with 
-		span(class='footer__heart') ♥ 
-		| by 
-		a(href='https://christieman.com/') Ducky
-// Made with ♥ by Ducky
-// https://christieman.com/
+    video.addEventListener('timeupdate', function() {
+      // update the time display with the current time of the video
+      var minutes = Math.floor(video.currentTime / 60);
+      var seconds = Math.floor(video.currentTime % 60);
+      if (minutes < 10) minutes = '0' + minutes;
+      if (seconds < 10) seconds = '0' + seconds;
+      time.textContent = minutes + ':' + seconds;
+    });
 
-// - I noticed buggy scaling on mouseout for firefox, if you know why I'd love to hear it!
+  </script>
 
-// Degree of Rotation (try .2, .2) or higher for some fun
-const xRatio = 0.1;
-const yRatio = 0.15;
+</body>
 
-const posters = document.querySelectorAll('.poster');
+<style>
 
-const onHover = (poster, shine, { offsetX, offsetY }) => {
-	const width = poster.clientWidth;
-	const height = poster.clientHeight;
-	const dx = offsetX - (width / 2);
-	const dy = offsetY - (height / 2);
-	
-	shine.style.transform = `translate(${dx}px, ${dy}px)`;
-	poster.style.transform = `rotateY(${-dx * yRatio}deg) rotateX(${dy * xRatio}deg)`;
-};
+/* style your elements here */
 
-const reset = (poster) => {
-	poster.style.transform = ``;
-};
+#video {
+  width: 400px;
+}
 
-posters.forEach(poster => {
-	const image = poster.querySelector('.poster__image');
-	const shine = poster.querySelector('.poster__shine');
-	image.addEventListener('mousemove', e => onHover(image, shine, e));
-	image.addEventListener('mouseout', () => reset(image));
-});
+#time {
+  font-family: monospace;
+}
+
+</style>
+
+</html>
+
+
+
