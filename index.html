@@ -1,31 +1,25 @@
-// Made with ♥ by Ducky
-// https://christieman.com/
+- var movies = []
+- movies.push({ title: `Adventure Time`, background: `https://i.imgur.com/M468PRI.jpeg` })
+- movies.push({ title: `Bob's Burgers`, background: `https://i.imgur.com/bRK3CB2.jpeg` })
+- movies.push({ title: `The Office`, background: `https://i.imgur.com/yXJCIY1.jpeg` })
+- movies.push({ title: `Parks and Recreation`, background: `https://i.imgur.com/DBXlssR.jpeg` })
+- movies.push({ title: `Rick and Morty`, background: `https://i.imgur.com/6w0lPGQ.jpeg` })
 
-// - I noticed buggy scaling on mouseout for firefox, if you know why I'd love to hear it!
-
-// Degree of Rotation (try .2, .2) or higher for some fun
-const xRatio = 0.1;
-const yRatio = 0.15;
-
-const posters = document.querySelectorAll('.poster');
-
-const onHover = (poster, shine, { offsetX, offsetY }) => {
-	const width = poster.clientWidth;
-	const height = poster.clientHeight;
-	const dx = offsetX - (width / 2);
-	const dy = offsetY - (height / 2);
-	
-	shine.style.transform = `translate(${dx}px, ${dy}px)`;
-	poster.style.transform = `rotateY(${-dx * yRatio}deg) rotateX(${dy * xRatio}deg)`;
-};
-
-const reset = (poster) => {
-	poster.style.transform = ``;
-};
-
-posters.forEach(poster => {
-	const image = poster.querySelector('.poster__image');
-	const shine = poster.querySelector('.poster__shine');
-	image.addEventListener('mousemove', e => onHover(image, shine, e));
-	image.addEventListener('mouseout', () => reset(image));
-});
+div(class='background-container')
+div(class='content')
+	div(class='title') 
+		| Apple TV Experience 
+		em Hint: Hover
+	div(class='grid')
+		each movie in movies
+			div(class=`poster`)
+					div(class='poster__image-container')
+						div(class=`poster__image-perspective`)
+							div(class='poster__image', style=`background-image: url('${movie.background}');`)
+								div(class='poster__shine')
+					div(class='poster__title')= movie.title
+	div(class='footer') 
+		| Made with 
+		span(class='footer__heart') ♥ 
+		| by 
+		a(href='https://christieman.com/') Ducky
