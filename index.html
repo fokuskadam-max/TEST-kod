@@ -65,7 +65,11 @@ iframe{width:100%;height:560px;border:1px solid var(--bd);border-radius:14px;bac
 <button class="g" id="ord">📲 Тапсырысты WhatsApp-қа жіберу</button>
 <div class="c" id="pay" style="margin-top:12px"><b>💳 Төлем</b><p class="n" id="amt"></p><button id="cp">📋 Kaspi нөмірін көшіру</button><button class="g" id="paid">✅ Төледім, код сұрау</button></div>
 <div id="cd"><label class="f">Төлемнен кейін алған код</label><input type="text" id="code" placeholder="Кодты осында жазыңыз"><button id="ck">🔓 Кодты енгізу</button></div>
-<button id="dl" style="display:none">⬇️ Шақыртуды жүктеп алу</button>
+<div id="dw" style="display:none">
+<button id="dl">⬇️ Шақыртуды жүктеп алу</button>
+<button class="g" id="op">👁 Браузерде ашу</button>
+<p class="n">Жүктелген файл ашылмаса: Chrome → ⋮ → Жүктеулер ішінен басыңыз. Ол да ашылмаса, файлды сатушыға жіберіңіз, сілтеме жасап береді.</p>
+</div>
 <p class="n" id="note"></p></div>
 </div>
 </div>
@@ -129,7 +133,7 @@ function build(d){
 function data(){return{pkg:pkg(),name:$("name").value.trim()||"Той иесі",kind:$("kind").value,date:$("date").value,time:$("time").value,place:$("place").value.trim()||"Мекенжай көрсетілмеген",wish:$("wish").value.trim(),video:$("video").value.trim(),wa:$("wa").value.trim(),photos:photos}}
 
 $("go").addEventListener("click",function(){
-  unlocked=false;$("dl").style.display="none";$("cd").style.display="block";$("pay").style.display="block";
+  unlocked=false;$("dw").style.display="none";$("cd").style.display="block";$("pay").style.display="block";
   lastHtml=build(data());
   var f=$("pv");f.style.display="block";f.srcdoc=lastHtml;
   $("act").style.display="block";f.scrollIntoView({behavior:"smooth"});
@@ -155,15 +159,23 @@ $("ck").addEventListener("click",function(){
   if(used.indexOf(v)>=0){$("note").textContent="Бұл код бұрын қолданылған. Жаңа шақыру үшін жаңа код керек.";return}
   used.push(v);try{localStorage.setItem("usedCodes",JSON.stringify(used))}catch(e){}
   unlocked=true;lastHtml=build(data());$("pv").srcdoc=lastHtml;
-  $("cd").style.display="none";$("pay").style.display="none";$("dl").style.display="block";
+  $("cd").style.display="none";$("pay").style.display="none";$("dw").style.display="block";
   $("note").textContent="Код қабылданды ✅ Бірден жүктеп алыңыз.";
 });
 
+function blobUrl(){return URL.createObjectURL(new Blob([lastHtml],{type:"text/html;charset=utf-8"}))}
+
 $("dl").addEventListener("click",function(){
   if(!unlocked)return;
-  var b=new Blob([lastHtml],{type:"text/html"}),a=document.createElement("a");
-  a.href=URL.createObjectURL(b);a.download="shakyrtu.html";
+  var a=document.createElement("a");
+  a.href=blobUrl();a.download="shakyrtu.html";
   document.body.appendChild(a);a.click();a.remove();
+});
+
+$("op").addEventListener("click",function(){
+  if(!unlocked)return;
+  var w=window.open(blobUrl(),"_blank");
+  if(!w){$("note").textContent="Браузер жаңа бетті бұғаттады. Рұқсат беріп, қайта басыңыз."}
 });
 
 $("ord").addEventListener("click",function(){
